@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#0a1018">
+<title>Più Mosso — Life</title>
+<style>
+:root{
+  --bg:#07101a;
+  --bg-soft:#0f1824;
+  --panel:#101a27;
+  --panel-2:#162233;
+  --panel-3:#1b2a3d;
+  --text:#f3f6fa;
+  --muted:rgba(243,246,250,.72);
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.14);
+  --gold:#d7b067;
+  --gold-2:#bc9350;
+  --blue:#82adff;
+  --green:#75c097;
+  --red:#e08c8c;
+  --shadow:0 26px 70px rgba(0,0,0,.32);
+  --radius-xl:30px;
+  --radius-lg:22px;
+  --radius-md:16px;
+  --max:1420px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  color:var(--text);
+  font-family:Manrope,ui-sans-serif,system-ui,-apple-system,sans-serif;
+  background:
+    radial-gradient(900px 560px at 0% 0%, rgba(130,173,255,.18), transparent 58%),
+    radial-gradient(760px 520px at 100% 0%, rgba(215,176,103,.13), transparent 48%),
+    linear-gradient(180deg, #07101a 0%, #0b1420 35%, #101826 100%);
+}
+a{color:inherit}
+button,input,select,textarea{font:inherit}
+.shell{max-width:var(--max);margin:0 auto;padding:26px 18px 48px}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  margin-bottom:18px;
+}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.24em;
+  font-size:.72rem;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+h1,h2,h3{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-weight:600;
+}
+h1{
+  max-width:900px;
+  font-size:4.2rem;
+  line-height:.92;
+}
+.sub{
+  margin-top:12px;
+  max-width:860px;
+  color:var(--muted);
+  line-height:1.7;
+}
+.badge-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-end;
+}
+.badge{
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--muted);
+  font-size:.82rem;
+}
+.quick-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:18px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  position:sticky;
+  top:10px;
+  z-index:6;
+  backdrop-filter:blur(14px);
+}
+.quick-link{
+  text-decoration:none;
+  padding:11px 15px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  font-size:.84rem;
+}
+.hero-grid,
+.two-col,
+.three-col,
+.four-col,
+.market-grid,
+.world-grid{
+  display:grid;
+  gap:18px;
+}
+.hero-grid{grid-template-columns:1.1fr .9fr;margin-bottom:18px}
+.two-col{grid-template-columns:1fr 1fr}
+.three-col{grid-template-columns:repeat(3,minmax(0,1fr))}
+.four-col{grid-template-columns:repeat(4,minmax(0,1fr))}
+.market-grid{grid-template-columns:1.15fr .85fr}
+.world-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.section-space{margin-top:18px}
+.panel{
+  border-radius:var(--radius-xl);
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.panel-head{
+  padding:18px 20px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+}
+.panel-head h2{font-size:2rem}
+.panel-kicker{
+  color:var(--muted);
+  font-size:.86rem;
+}
+.panel-body{padding:18px 20px}
+.stack{display:grid;gap:14px}
+.helper,.mini{
+  color:var(--muted);
+  line-height:1.65;
+}
+.mini{font-size:.88rem}
+label{
+  display:grid;
+  gap:8px;
+  color:var(--muted);
+  font-size:.92rem;
+}
+input,select,textarea{
+  width:100%;
+  padding:13px 14px;
+  color:var(--text);
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.035);
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;
+  border-color:rgba(215,176,103,.4);
+  box-shadow:0 0 0 4px rgba(215,176,103,.08);
+}
+textarea{min-height:110px;resize:vertical}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px}
+.btn{
+  min-height:46px;
+  padding:0 18px;
+  border-radius:999px;
+  border:1px solid transparent;
+  cursor:pointer;
+  font-weight:800;
+}
+.btn-primary{
+  color:#17120c;
+  background:linear-gradient(180deg, #f0d59f, var(--gold));
+}
+.btn-secondary{
+  color:var(--text);
+  background:rgba(255,255,255,.03);
+  border-color:rgba(255,255,255,.1);
+}
+.btn-ghost{
+  color:var(--muted);
+  background:transparent;
+  border-color:rgba(255,255,255,.08);
+}
+.card{
+  padding:18px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.03);
+}
+.card strong,.card h3{
+  display:block;
+  margin-bottom:8px;
+  font-size:1.04rem;
+}
+.card p,.card li{color:var(--muted);line-height:1.62}
+.card ul{display:grid;gap:8px;padding-left:18px}
+.hero-card{
+  position:relative;
+  min-height:410px;
+  padding:24px;
+  border-radius:30px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.07);
+  background:
+    linear-gradient(140deg, rgba(130,173,255,.14), rgba(255,255,255,.02) 35%, rgba(215,176,103,.14)),
+    rgba(255,255,255,.03);
+}
+.hero-card::after{
+  content:"";
+  position:absolute;
+  inset:auto -80px -120px auto;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(215,176,103,.24), transparent 70%);
+  pointer-events:none;
+}
+.hero-card > *{position:relative;z-index:1}
+.hero-title{
+  font-size:2.7rem;
+  line-height:.95;
+  max-width:520px;
+}
+.hero-copy{
+  margin-top:14px;
+  max-width:640px;
+  color:var(--muted);
+  line-height:1.75;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.mode-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-top:18px;
+}
+.mode-btn{
+  text-align:left;
+  padding:16px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  cursor:pointer;
+}
+.mode-btn span{
+  display:block;
+  color:var(--muted);
+  font-size:.84rem;
+  margin-top:6px;
+  line-height:1.5;
+}
+.metric-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+.metric{
+  padding:16px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.025);
+}
+.metric strong{
+  display:block;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:1.95rem;
+  margin-bottom:4px;
+}
+.metric span{
+  color:var(--muted);
+  font-size:.86rem;
+}
+.result-list,
+.agenda-list,
+.ritual-list,
+.thesis-list{
+  display:grid;
+  gap:12px;
+}
+.result-card,
+.agenda-card,
+.ritual-item,
+.thesis-item{
+  padding:16px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.025);
+}
+.result-card h4,.agenda-card h4,.ritual-item h4,.thesis-item h4{
+  font-size:1rem;
+  margin-bottom:6px;
+}
+.result-card p,.agenda-card p,.ritual-item p,.thesis-item p{
+  color:var(--muted);
+  font-size:.92rem;
+  line-height:1.62;
+}
+.result-card a,.agenda-card a{
+  display:inline-flex;
+  margin-top:10px;
+  text-decoration:none;
+  color:var(--text);
+  border-bottom:1px solid rgba(215,176,103,.35);
+}
+.guide-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.guide-step{
+  padding:16px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.025);
+}
+.guide-step strong{display:block;margin-bottom:8px}
+.guide-step p{color:var(--muted);line-height:1.62}
+.tv-box{
+  min-height:410px;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.02);
+}
+.note-box{
+  padding:16px;
+  border-radius:18px;
+  border:1px solid rgba(215,176,103,.18);
+  background:rgba(215,176,103,.06);
+  color:var(--muted);
+  line-height:1.65;
+}
+.link-tile{
+  display:block;
+  text-decoration:none;
+  padding:16px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.025);
+}
+.link-tile strong{
+  display:block;
+  margin-bottom:6px;
+}
+.link-tile span{
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.55;
+}
+.status-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  font-size:.82rem;
+  color:var(--muted);
+}
+.status-chip::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+}
+.lock{
+  position:fixed;
+  inset:0;
+  background:rgba(5,8,12,.78);
+  backdrop-filter:blur(12px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:20;
+}
+.lock-box{
+  width:min(100%,480px);
+  padding:26px;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)), var(--panel-2);
+  box-shadow:var(--shadow);
+}
+.lock-box h2{
+  font-size:2.4rem;
+  margin-bottom:10px;
+}
+.lock-box p{color:var(--muted);line-height:1.7;margin-bottom:16px}
+.hidden{display:none}
+.footer-note{
+  margin-top:18px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.88rem;
+}
+.sync-stamp{
+  color:var(--muted);
+  font-size:.82rem;
+}
+.pill-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  color:var(--muted);
+  font-size:.8rem;
+}
+.quote-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+.quote-card{
+  padding:14px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.025);
+}
+.quote-card strong{
+  display:block;
+  margin-bottom:6px;
+}
+.quote-card .quote-value{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:1.7rem;
+}
+.quote-card .quote-change{
+  font-size:.88rem;
+  margin-top:4px;
+}
+.quote-up{color:#9be0ae}
+.quote-down{color:#f0abab}
+.quote-flat{color:var(--muted)}
+@media (max-width:1240px){
+  .hero-grid,.market-grid,.two-col,.world-grid{grid-template-columns:1fr}
+  .four-col{grid-template-columns:1fr 1fr}
+  .mode-grid{grid-template-columns:1fr 1fr}
+  .quote-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:940px){
+  h1{font-size:3.2rem}
+  .three-col,.metric-grid,.guide-grid{grid-template-columns:1fr 1fr}
+  .badge-row{justify-content:flex-start}
+}
+@media (max-width:720px){
+  .shell{padding:18px 14px 36px}
+  h1{font-size:2.45rem}
+  .topbar{flex-direction:column}
+  .quick-nav{position:static;overflow:auto;white-space:nowrap}
+  .three-col,.four-col,.metric-grid,.guide-grid,.mode-grid,.quote-grid{grid-template-columns:1fr}
+  .hero-card{min-height:auto}
+  .panel-head{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Più Mosso • Life OS</div>
+        <h1>Prywatny cockpit życia, miasta, kultury i rynku.</h1>
+        <p class="sub">To ma być Twoje piękne, inteligentne wejście w dzień. Mniej chaosu, więcej jakości: Poznań, wystawy, kino, miejsca, rytuały, teza rynku i świat, który tłumaczy nastroje.</p>
+      </div>
+      <div class="badge-row">
+        <div class="badge">PIN-protected</div>
+        <div class="badge">Poznań daily</div>
+        <div class="badge">Luxury life system</div>
+        <div class="badge">Market observation</div>
+      </div>
+    </div>
+
+    <div class="quick-nav">
+      <a href="#todaySection" class="quick-link">Start dnia</a>
+      <a href="#finderSection" class="quick-link">Finder</a>
+      <a href="#ritualSection" class="quick-link">Rytuały</a>
+      <a href="#cultureSection" class="quick-link">Kultura i kino</a>
+      <a href="#marketSection" class="quick-link">Market pulse</a>
+      <a href="#worldSection" class="quick-link">Świat</a>
+    </div>
+
+    <div class="hero-grid" id="todaySection">
+      <section class="hero-card">
+        <div class="status-chip">Life cockpit gotowy</div>
+        <h2 class="hero-title" id="lifeDateLabel">Dziś</h2>
+        <p class="hero-copy" id="lifeMoodLine">To jest wejście w dzień bez rozproszenia. Najpierw wybierasz klimat dnia, potem jedną rzecz w mieście, a dopiero później schodzisz do rynku i newsów.</p>
+        <div class="hero-actions">
+          <a href="#finderSection" class="btn btn-primary" style="text-decoration:none;display:inline-flex;align-items:center">Wybierz plan dnia</a>
+          <a href="#marketSection" class="btn btn-secondary" style="text-decoration:none;display:inline-flex;align-items:center">Sprawdź rynek</a>
+        </div>
+        <div class="mode-grid">
+          <button class="mode-btn" type="button" data-mode="events" data-query="koncert jazz design">
+            Miasto żyje
+            <span>Koncert, event, spotkanie, coś z energią.</span>
+          </button>
+          <button class="mode-btn" type="button" data-mode="exhibitions" data-query="wystawa sztuka fotografia">
+            Kultura spokojna
+            <span>Wystawa, muzeum, galeria, oddech dla głowy.</span>
+          </button>
+          <button class="mode-btn" type="button" data-mode="cinema" data-query="kino ambitne premiera">
+            Wieczór filmowy
+            <span>Seans, studyjne kino, repertuar na dziś.</span>
+          </button>
+          <button class="mode-btn" type="button" data-mode="maps" data-query="kawiarnia spacer zachód słońca">
+            Dzień lekki
+            <span>Spacer, miejsce, kawiarnia, miękki reset.</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Ultra Prosto</h2>
+            <div class="panel-kicker">Masz patrzeć tu najpierw, nie na wszystko naraz.</div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="three-col">
+            <div class="card">
+              <strong>1. Co dziś</strong>
+              <p id="todayPlanText">Wybierz jedną dominantę dnia: miasto, kultura, kino albo rynek. Nie próbuj konsumować całej strony jednocześnie.</p>
+            </div>
+            <div class="card">
+              <strong>2. Gdzie kliknąć</strong>
+              <p id="todayClickText">Jeśli chcesz wyjść: Finder. Jeśli chcesz zostać przy biurku: Market Pulse i Świat.</p>
+            </div>
+            <div class="card">
+              <strong>3. Jak nie zgłupieć</strong>
+              <p>Ta strona jest po to, żeby szybciej wybrać, a nie wpaść w nieskończone scrollowanie. Jedna decyzja wystarczy.</p>
+            </div>
+          </div>
+
+          <div class="metric-grid section-space">
+            <div class="metric"><strong>Poznań</strong><span>wydarzenia, miejsca i rytm miasta</span></div>
+            <div class="metric"><strong>Kultura</strong><span>wystawy, muzea, seanse i klimat</span></div>
+            <div class="metric"><strong>Rynek</strong><span>wykresy, watchlisty i kalendarz makro</span></div>
+            <div class="metric"><strong>Teza</strong><span>nie impulsy, tylko własne myślenie</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" id="briefSection">
+      <div class="panel-head">
+        <div>
+          <h2>Daily Brief</h2>
+          <div class="panel-kicker">Automatyczny skrót dnia: miasto, wieczór, rynek i newsy.</div>
+        </div>
+        <div class="sync-stamp" id="lifeSyncStamp">Ładowanie danych...</div>
+      </div>
+      <div class="panel-body">
+        <div class="three-col">
+          <div class="card">
+            <strong>Co dziś realnie zrobić</strong>
+            <p id="dailySummaryText">Za chwilę pojawi się automatyczny skrót dnia.</p>
+            <div class="pill-row" id="dailyActionPills"></div>
+          </div>
+          <div class="card">
+            <strong>Market regime</strong>
+            <p id="marketRegimeText">Czekam na snapshot rynku.</p>
+          </div>
+          <div class="card">
+            <strong>Świat dziś tłumaczy</strong>
+            <p id="newsThemeText">Za chwilę pokażę dominujące tematy z newsów.</p>
+          </div>
+        </div>
+
+        <div class="quote-grid section-space" id="marketQuoteGrid"></div>
+
+        <div class="three-col section-space">
+          <div class="stack">
+            <div class="card">
+              <strong>Top wydarzenia dziś</strong>
+            </div>
+            <div class="agenda-list" id="cityPicksList"></div>
+          </div>
+          <div class="stack">
+            <div class="card">
+              <strong>Kino i wieczór</strong>
+            </div>
+            <div class="agenda-list" id="cinemaPicksList"></div>
+          </div>
+          <div class="stack">
+            <div class="card">
+              <strong>Drivers rynku i polityki</strong>
+            </div>
+            <div class="agenda-list" id="newsDriversList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="finderSection">
+      <div class="panel-head">
+        <div>
+          <h2>Poznań Finder</h2>
+          <div class="panel-kicker">Szybka decyzja: co robić dziś, bez błądzenia po piętnastu zakładkach.</div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="two-col">
+          <div class="stack">
+            <label>Motyw dnia
+              <input id="lifeQuery" placeholder="Np. jazz, wystawa, kino, spacer, design, wino">
+            </label>
+            <label>Tryb
+              <select id="lifeMode">
+                <option value="events">Wydarzenia</option>
+                <option value="exhibitions">Wystawy</option>
+                <option value="cinema">Kino</option>
+                <option value="maps">Co robić w mieście</option>
+              </select>
+            </label>
+            <div class="btn-row">
+              <button class="btn btn-primary" type="button" id="runLifeSearch">Odśwież linki</button>
+              <button class="btn btn-secondary" type="button" id="saveDailyIdea">Zapisz jako pomysł dnia</button>
+            </div>
+            <p class="helper">To nie jest scraping. To prywatny meta-finder, który prowadzi Cię do żywych źródeł i skraca drogę do decyzji.</p>
+          </div>
+
+          <div class="stack">
+            <div class="note-box">
+              <strong style="display:block;margin-bottom:8px;color:var(--text)">Podręcznik dla człowieka, nie dla informatyka</strong>
+              1. Wpisz klimat dnia.<br>
+              2. Otwórz maksymalnie 2 źródła.<br>
+              3. Wybierz jedną rzecz, nie pięć.<br>
+              4. Zapisz dobry pomysł, jeśli chcesz do niego wrócić.
+            </div>
+            <div class="guide-grid">
+              <div class="guide-step">
+                <strong>Jeśli chcesz wyjść</strong>
+                <p>Ustaw `Wydarzenia` albo `Co robić w mieście` i kliknij pierwszy link.</p>
+              </div>
+              <div class="guide-step">
+                <strong>Jeśli chcesz kultury</strong>
+                <p>Ustaw `Wystawy` albo `Kino` i nie szukaj dłużej niż 3 minuty.</p>
+              </div>
+              <div class="guide-step">
+                <strong>Jeśli chcesz spokoju</strong>
+                <p>Zapisz pomysł dnia i wróć na stronę dopiero po podjęciu decyzji.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="result-list section-space" id="lifeResults"></div>
+      </div>
+    </section>
+
+    <section class="panel section-space" id="ritualSection">
+      <div class="panel-head">
+        <div>
+          <h2>Rytuały i Pomysły</h2>
+          <div class="panel-kicker">Twoje własne ulubione miejsca i drobne idee, żeby Life było naprawdę Twoje.</div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="two-col">
+          <div class="stack">
+            <label>Nazwa rytuału albo miejsca
+              <input id="ritualTitle" placeholder="Np. Muza solo we wtorek">
+            </label>
+            <label>Krótka notka
+              <textarea id="ritualNote" placeholder="Co w tym lubisz, po co tam wracasz, jaki to ma klimat."></textarea>
+            </label>
+            <div class="btn-row">
+              <button class="btn btn-primary" type="button" id="addRitualButton">Dodaj do moich rytuałów</button>
+              <button class="btn btn-ghost" type="button" id="seedRitualsButton">Dodaj przykłady</button>
+            </div>
+            <p class="mini">To jest Twoja prywatna półka. Możesz tu trzymać miejsca, zwyczaje, pomysły na wieczór i rzeczy, które chcesz powtarzać.</p>
+          </div>
+          <div class="stack">
+            <div class="card">
+              <strong>Po co to jest</strong>
+              <p>Żeby Life nie było tylko wyszukiwarką, ale Twoim stylem życia. Nie zaczynaj każdego dnia od zera. Zbieraj rzeczy, które już działają.</p>
+            </div>
+            <div class="card">
+              <strong>Prosty filtr</strong>
+              <p>Jeśli jesteś zmęczony, bierz coś z własnych rytuałów. Jeśli masz energię, szukaj nowej rzeczy w Finderze. To wystarczy.</p>
+            </div>
+          </div>
+        </div>
+        <div class="ritual-list section-space" id="ritualList"></div>
+      </div>
+    </section>
+
+    <section class="panel section-space" id="cultureSection">
+      <div class="panel-head">
+        <div>
+          <h2>Kultura, Wystawy, Kino</h2>
+          <div class="panel-kicker">Najkrótsza droga do dobrego wieczoru w mieście.</div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="four-col">
+          <a class="link-tile" href="https://www.poznan.pl/mim/events/" target="_blank" rel="noreferrer">
+            <strong>Poznan.pl — Co? Gdzie? Kiedy?</strong>
+            <span>Oficjalny kalendarz miejskich wydarzeń.</span>
+          </a>
+          <a class="link-tile" href="https://ps.ckzamek.pl/" target="_blank" rel="noreferrer">
+            <strong>CK Zamek</strong>
+            <span>Koncerty, wystawy, spotkania, program z charakterem.</span>
+          </a>
+          <a class="link-tile" href="https://mnp.art.pl/" target="_blank" rel="noreferrer">
+            <strong>Muzeum Narodowe</strong>
+            <span>Dobre na spokojniejszy, piękniejszy dzień.</span>
+          </a>
+          <a class="link-tile" href="https://www.estrada.poznan.pl/estrada/kino-muza/" target="_blank" rel="noreferrer">
+            <strong>Kino Muza</strong>
+            <span>Studyjny klimat i repertuar bardziej świadomy.</span>
+          </a>
+        </div>
+        <div class="four-col section-space">
+          <a class="link-tile" href="https://poznan.repertuary.pl/" target="_blank" rel="noreferrer">
+            <strong>Repertuary.pl</strong>
+            <span>Najszybsze “co, gdzie i o której”.</span>
+          </a>
+          <a class="link-tile" href="https://www.filmweb.pl/showtimes/Poznan" target="_blank" rel="noreferrer">
+            <strong>Filmweb — Poznań</strong>
+            <span>Seanse plus szybki podgląd opinii.</span>
+          </a>
+          <a class="link-tile" href="https://www.poznan.pl/mim/studia/seances/common" target="_blank" rel="noreferrer">
+            <strong>Poznań.pl — repertuar</strong>
+            <span>Jeszcze jedno miejskie wejście do kin.</span>
+          </a>
+          <a class="link-tile" id="lifeMapsLink" href="https://www.google.com/maps/search/ciekawe+miejsca+Pozna%C5%84" target="_blank" rel="noreferrer">
+            <strong>Google Maps — ciekawe miejsca</strong>
+            <span>Na dni, kiedy chcesz po prostu wyjść gdzieś dobrze.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel section-space" id="marketSection">
+      <div class="panel-head">
+        <div>
+          <h2>Market Pulse</h2>
+          <div class="panel-kicker">Obserwacja rynku, nie automat “kup teraz”.</div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="note-box" style="margin-bottom:18px">
+          Ta część ma pomóc Ci myśleć, nie klikać impulsywnie. To nie jest spersonalizowana porada inwestycyjna. Przy decyzjach finansowych używaj więcej niż jednego źródła i oceniaj własne ryzyko.
+        </div>
+
+        <div class="market-grid">
+          <div class="tv-box">
+            <div class="tradingview-widget-container" style="height:100%;width:100%">
+              <div id="tv_chart" style="height:100%;width:100%"></div>
+            </div>
+          </div>
+          <div class="stack">
+            <div class="card">
+              <strong>Watchlista obserwacyjna</strong>
+              <ul>
+                <li>WIG20 i mWIG40 — lokalny sentyment</li>
+                <li>S&amp;P 500 i Nasdaq 100 — globalny apetyt na ryzyko</li>
+                <li>Gold i USD/PLN — stres i defensywa</li>
+                <li>BTC — płynność i spekulacyjny klimat</li>
+                <li>US bonds — koszt pieniądza i presja na growth</li>
+              </ul>
+            </div>
+            <div class="card">
+              <strong>Jak to czytać</strong>
+              <p>Najpierw świat, potem Polska, dopiero później pojedyncze pomysły. Najpierw kierunek i warunki, potem decyzja.</p>
+            </div>
+            <div class="card">
+              <strong>Czego nie robić</strong>
+              <p>Nie traktuj jednego newsa jak rozkazu. Teza, wykres, ryzyko, plan wyjścia. Dopiero potem jakikolwiek ruch.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col section-space">
+          <div class="stack">
+            <div class="tv-box">
+              <div class="tradingview-widget-container" style="height:100%;width:100%">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                  "symbols": [
+                    {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
+                    {"proName": "NASDAQ:NDX", "title": "Nasdaq 100"},
+                    {"proName": "TVC:GOLD", "title": "Gold"},
+                    {"proName": "FX:USDPLN", "title": "USD/PLN"},
+                    {"proName": "BITSTAMP:BTCUSD", "title": "BTC"}
+                  ],
+                  "showSymbolLogo": true,
+                  "isTransparent": true,
+                  "displayMode": "adaptive",
+                  "colorTheme": "dark",
+                  "locale": "pl"
+                }
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="stack">
+            <div class="tv-box">
+              <div class="tradingview-widget-container" style="height:100%;width:100%">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                {
+                  "colorTheme": "dark",
+                  "isTransparent": true,
+                  "width": "100%",
+                  "height": "100%",
+                  "locale": "pl",
+                  "importanceFilter": "-1,0,1"
+                }
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col section-space">
+          <div class="stack">
+            <label>Teza rynku na dziś
+              <textarea id="thesisInput" placeholder="Np. Świat w trybie ostrożnym, więc obserwuję defensywę, jakość i nie gonię wzrostu."></textarea>
+            </label>
+            <div class="btn-row">
+              <button class="btn btn-primary" type="button" id="saveThesisButton">Zapisz tezę</button>
+              <button class="btn btn-ghost" type="button" id="seedThesisButton">Dodaj przykład</button>
+            </div>
+          </div>
+          <div class="card">
+            <strong>Lepszy model myślenia</strong>
+            <p>Nie pytaj codziennie “w co wejść”. Pytaj: jaki jest klimat rynku, co jest nagradzane, co karane, gdzie jest płynność, a gdzie ostrożność. Dzięki temu zachowujesz głowę, a nie tylko emocje.</p>
+          </div>
+        </div>
+        <div class="thesis-list section-space" id="thesisList"></div>
+      </div>
+    </section>
+
+    <section class="panel section-space" id="worldSection">
+      <div class="panel-head">
+        <div>
+          <h2>Świat i Kontekst</h2>
+          <div class="panel-kicker">Wydarzenia, które tłumaczą nastroje i kapitał.</div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="world-grid">
+          <a class="link-tile" href="https://www.reuters.com/world/" target="_blank" rel="noreferrer">
+            <strong>Reuters World</strong>
+            <span>Czysty, szybki przegląd świata bez przesadnego hałasu.</span>
+          </a>
+          <a class="link-tile" href="https://www.bbc.com/news/world" target="_blank" rel="noreferrer">
+            <strong>BBC World</strong>
+            <span>Dobry kontekst geopolityczny i społeczny.</span>
+          </a>
+          <a class="link-tile" href="https://www.marketaux.com/" target="_blank" rel="noreferrer">
+            <strong>Finance news</strong>
+            <span>Sentyment rynkowy i powiązania newsów z aktywami.</span>
+          </a>
+        </div>
+
+        <div class="two-col section-space">
+          <div class="card">
+            <strong>Instrukcja dla biznesowego idioty</strong>
+            <p>1. Najpierw zobacz, co dzieje się na świecie. 2. Potem patrz na wykres i kalendarz. 3. Zapisz własną tezę. 4. Dopiero wtedy rozważ ruch. To wystarczy, żeby nie działać jak tłum.</p>
+          </div>
+          <div class="card">
+            <strong>Po co to wszystko</strong>
+            <p>Żeby Più Mosso było stylem życia, a nie tylko stroną. Miasto ma Cię karmić estetyką, kultura myśleniem, a rynek dyscypliną. Wszystko ma Cię robić bardziej świadomym, nie bardziej przebodźcowanym.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">Life OS jest prywatnym kokpitem. Zmienisz PIN w pliku <code>life/index.html</code> przy stałej <code>PIN_CODE</code>.</p>
+  </div>
+
+  <div class="lock" id="lockScreen">
+    <div class="lock-box">
+      <div class="eyebrow">Prywatna podstrona</div>
+      <h2>Life</h2>
+      <p>Wpisz PIN, żeby wejść do prywatnego świata Più Mosso. To ma być Twoja elegancka, osobista warstwa życia, miasta i rynku.</p>
+      <div class="stack">
+        <label>PIN
+          <input id="pinInput" type="password" placeholder="PIN">
+        </label>
+        <div class="btn-row">
+          <button class="btn btn-primary" type="button" id="unlockButton">Wejdź</button>
+        </div>
+        <p class="helper" id="pinError" style="color:#f2b8b8"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://s3.tradingview.com/tv.js"></script>
+  <script>
+    const PIN_CODE = "2137";
+    const LIFE_SYNC_URL = "./data/life-sync.json";
+    const LIFE_UNLOCK_KEY = "piumosso-life-unlocked";
+    const LIFE_RITUALS_KEY = "piumosso-life-rituals";
+    const LIFE_THESIS_KEY = "piumosso-life-thesis";
+
+    function todayLabel() {
+      return new Date().toLocaleDateString("pl-PL", {
+        weekday: "long",
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+      });
+    }
+
+    function safeRead(key, fallback) {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(key) || "null");
+        return parsed || fallback;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function safeWrite(key, value) {
+      localStorage.setItem(key, JSON.stringify(value));
+    }
+
+    function formatDateTime(value) {
+      if (!value) return "brak danych";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleString("pl-PL");
+    }
+
+    function quoteClass(change) {
+      if (change > 0.05) return "quote-up";
+      if (change < -0.05) return "quote-down";
+      return "quote-flat";
+    }
+
+    function buildLifeLinks() {
+      const query = document.getElementById("lifeQuery").value.trim() || "ciekawe wydarzenia";
+      const mode = document.getElementById("lifeMode").value;
+      const encoded = encodeURIComponent(`${query} Poznań`);
+      const configs = {
+        events: [
+          {
+            title: "Poznan.pl — wydarzenia",
+            description: `Szukaj wydarzeń dla klimatu: ${query}.`,
+            href: `https://www.google.com/search?q=site%3Apoznan.pl%2Fmim%2Fevents%2F+${encoded}`
+          },
+          {
+            title: "CK Zamek",
+            description: "Koncerty, wystawy, program performatywny i spotkania.",
+            href: `https://www.google.com/search?q=site%3Aps.ckzamek.pl+${encoded}`
+          },
+          {
+            title: "Google Maps — klimat dnia",
+            description: "Mapa z miejscami i aktywnościami pod ten nastrój.",
+            href: `https://www.google.com/maps/search/${encoded}`
+          }
+        ],
+        exhibitions: [
+          {
+            title: "Muzeum Narodowe",
+            description: `Wystawy i ekspozycje pod temat: ${query}.`,
+            href: `https://www.google.com/search?q=site%3Amnp.art.pl+${encoded}`
+          },
+          {
+            title: "Poznań.pl — wystawy",
+            description: "Miejski przegląd rzeczy wystawienniczych.",
+            href: `https://www.google.com/search?q=site%3Apoznan.pl%2Fmim%2Fevents%2F+wystawa+${encoded}`
+          },
+          {
+            title: "Google Maps — galerie i muzea",
+            description: "Szybki spacer po możliwościach w mieście.",
+            href: `https://www.google.com/maps/search/wystawy+muzea+${encoded}`
+          }
+        ],
+        cinema: [
+          {
+            title: "Repertuary.pl",
+            description: "Najszybsza odpowiedź: co, gdzie i o której dziś grają.",
+            href: "https://poznan.repertuary.pl/"
+          },
+          {
+            title: "Filmweb — seanse Poznań",
+            description: `Szukaj filmu albo klimatu: ${query}.`,
+            href: `https://www.google.com/search?q=site%3Afilmweb.pl%2Fshowtimes%2FPoznan+${encoded}`
+          },
+          {
+            title: "Kino Muza",
+            description: "Jeśli chcesz wieczoru bardziej charakternego.",
+            href: "https://www.estrada.poznan.pl/estrada/kino-muza/"
+          }
+        ],
+        maps: [
+          {
+            title: "Google Maps — klimat dnia",
+            description: `Otwórz miejsca w Poznaniu pod hasło: ${query}.`,
+            href: `https://www.google.com/maps/search/${encoded}`
+          },
+          {
+            title: "Poznan.pl — wydarzenia wokół tematu",
+            description: "Sprawdź, czy miasto ma dziś coś pod ten nastrój.",
+            href: `https://www.google.com/search?q=site%3Apoznan.pl%2Fmim%2Fevents%2F+${encoded}`
+          },
+          {
+            title: "Google — szeroki search",
+            description: "Na dni, kiedy chcesz tylko zainspirować głowę.",
+            href: `https://www.google.com/search?q=${encoded}`
+          }
+        ]
+      };
+      return configs[mode] || configs.events;
+    }
+
+    function renderLifeLinks() {
+      const results = document.getElementById("lifeResults");
+      results.innerHTML = "";
+      buildLifeLinks().forEach((item) => {
+        const card = document.createElement("article");
+        card.className = "result-card";
+        card.innerHTML = `
+          <h4>${item.title}</h4>
+          <p>${item.description}</p>
+          <a href="${item.href}" target="_blank" rel="noreferrer">Otwórz live źródło</a>
+        `;
+        results.appendChild(card);
+      });
+
+      const query = document.getElementById("lifeQuery").value.trim() || "ciekawe miejsca Poznań";
+      document.getElementById("lifeMapsLink").href = `https://www.google.com/maps/search/${encodeURIComponent(query + " Poznań")}`;
+    }
+
+    function renderToday() {
+      document.getElementById("lifeDateLabel").textContent = todayLabel();
+      const hour = new Date().getHours();
+      const mood = hour < 12
+        ? "Rano najlepiej zacząć od jednej decyzji: spacer, wystawa albo plan na wieczór."
+        : hour < 18
+          ? "To dobry moment, żeby wybrać konkretny plan na wieczór i przestać szukać bez końca."
+          : "Wieczorem najlepiej działa jedno dobre kino, wystawa, koncert albo piękne miejsce w mieście.";
+      const click = hour < 12
+        ? "Najpierw Finder i rytuały. Rynek zostaw na moment po kawie."
+        : hour < 18
+          ? "Najpierw wybierz plan wieczoru, dopiero potem zerknij na market pulse."
+          : "Najpierw kultura albo miasto. Jeśli już rynek, to tylko spokojna obserwacja.";
+      const plan = hour < 12
+        ? "Dziś rano wybierz ton dnia i nie wpadaj od razu w piętnaście decyzji."
+        : hour < 18
+          ? "Dziś ustaw jedną dobrą rzecz na wieczór i jedną tezę o rynku."
+          : "Dziś po prostu wybierz piękniejszy wieczór, a rynek potraktuj jak kontekst.";
+
+      document.getElementById("lifeMoodLine").textContent = mood;
+      document.getElementById("todayClickText").textContent = click;
+      document.getElementById("todayPlanText").textContent = plan;
+    }
+
+    function renderRituals() {
+      const list = document.getElementById("ritualList");
+      const rituals = safeRead(LIFE_RITUALS_KEY, []);
+      list.innerHTML = "";
+
+      if (!rituals.length) {
+        list.innerHTML = `<div class="ritual-item"><h4>Twoja półka jest jeszcze pusta</h4><p>Dodaj miejsca, wieczory, mikro-rytuały i sprawdzone pomysły. Dzięki temu nie będziesz zaczynał każdego dnia od zera.</p></div>`;
+        return;
+      }
+
+      rituals.forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "ritual-item";
+        card.innerHTML = `
+          <h4>${item.title}</h4>
+          <p>${item.note}</p>
+          <div class="btn-row" style="margin-top:12px">
+            <button class="btn btn-ghost" type="button" data-delete-ritual="${index}">Usuń</button>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    function addRitual(title, note) {
+      const rituals = safeRead(LIFE_RITUALS_KEY, []);
+      rituals.unshift({ title, note });
+      safeWrite(LIFE_RITUALS_KEY, rituals.slice(0, 18));
+      renderRituals();
+    }
+
+    function renderThesis() {
+      const list = document.getElementById("thesisList");
+      const items = safeRead(LIFE_THESIS_KEY, []);
+      list.innerHTML = "";
+
+      if (!items.length) {
+        list.innerHTML = `<div class="thesis-item"><h4>Brak zapisanej tezy</h4><p>Niech ta sekcja będzie Twoją prywatną dyscypliną. Jeden akapit dziennie wystarczy, żeby myśleć lepiej niż impulsywny tłum.</p></div>`;
+        return;
+      }
+
+      items.forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "thesis-item";
+        card.innerHTML = `
+          <h4>${item.date}</h4>
+          <p>${item.text}</p>
+          <div class="btn-row" style="margin-top:12px">
+            <button class="btn btn-ghost" type="button" data-delete-thesis="${index}">Usuń</button>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    function addThesis(text) {
+      const items = safeRead(LIFE_THESIS_KEY, []);
+      items.unshift({
+        date: new Date().toLocaleString("pl-PL"),
+        text
+      });
+      safeWrite(LIFE_THESIS_KEY, items.slice(0, 20));
+      renderThesis();
+    }
+
+    function renderList(containerId, items, formatter, emptyTitle, emptyText) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+
+      if (!items || !items.length) {
+        container.innerHTML = `<div class="agenda-card"><h4>${emptyTitle}</h4><p>${emptyText}</p></div>`;
+        return;
+      }
+
+      items.forEach((item) => {
+        const node = document.createElement("article");
+        node.className = "agenda-card";
+        node.innerHTML = formatter(item);
+        container.appendChild(node);
+      });
+    }
+
+    function renderLifeSync(snapshot) {
+      if (!snapshot) return;
+
+      document.getElementById("lifeSyncStamp").textContent = `Ostatnia aktualizacja: ${formatDateTime(snapshot.generatedAt)}`;
+      document.getElementById("dailySummaryText").textContent = snapshot.daily?.summary || "Brak dzisiejszego briefu.";
+      document.getElementById("marketRegimeText").textContent = snapshot.market?.posture || "Brak opisu rynku.";
+
+      const themes = snapshot.news?.themes || [];
+      document.getElementById("newsThemeText").textContent = themes.length
+        ? `Najmocniej wybijają się dziś: ${themes.map((item) => item.label).join(", ")}.`
+        : "Brak wyraźnych dominujących tematów.";
+
+      const pillRow = document.getElementById("dailyActionPills");
+      pillRow.innerHTML = "";
+      (snapshot.daily?.actions || []).slice(0, 4).forEach((action) => {
+        const pill = document.createElement("div");
+        pill.className = "pill";
+        pill.textContent = action;
+        pillRow.appendChild(pill);
+      });
+
+      const quoteGrid = document.getElementById("marketQuoteGrid");
+      quoteGrid.innerHTML = "";
+      const quotes = Object.values(snapshot.market?.quotes || {}).filter(Boolean);
+      quotes.forEach((quote) => {
+        const card = document.createElement("article");
+        card.className = "quote-card";
+        const change = Number(quote.changePct || 0);
+        card.innerHTML = `
+          <strong>${quote.name}</strong>
+          <div class="quote-value">${Number(quote.close || 0).toLocaleString("pl-PL", { maximumFractionDigits: 2 })}</div>
+          <div class="quote-change ${quoteClass(change)}">${change > 0 ? "+" : ""}${change.toFixed(2)}% dziś</div>
+        `;
+        quoteGrid.appendChild(card);
+      });
+
+      renderList(
+        "cityPicksList",
+        snapshot.daily?.cityPicks || [],
+        (item) => `
+          <h4>${item.title}</h4>
+          <p>${item.time} • ${item.place} • ${item.category || "wydarzenie"}</p>
+          <a href="${item.url}" target="_blank" rel="noreferrer">Otwórz szczegóły</a>
+        `,
+        "Brak miejskich propozycji",
+        "Jeśli źródło nie oddało dziś danych, użyj niżej Findera i oficjalnych linków."
+      );
+
+      renderList(
+        "cinemaPicksList",
+        snapshot.daily?.cinemaPicks || [],
+        (item) => `
+          <h4>${item.title}</h4>
+          <p>${item.time} • ${item.cinema}</p>
+          <a href="${item.film_url}" target="_blank" rel="noreferrer">Otwórz film</a>
+        `,
+        "Brak wybranych seansów",
+        "Jeśli repertuar się nie zaciągnął, wejdź do Repertuary.pl niżej."
+      );
+
+      const driverItems = [
+        ...(snapshot.news?.business || []).slice(0, 2),
+        ...(snapshot.news?.world || []).slice(0, 2),
+        ...(snapshot.news?.politics || []).slice(0, 2)
+      ];
+
+      renderList(
+        "newsDriversList",
+        driverItems,
+        (item) => `
+          <h4>${item.title}</h4>
+          <p>${item.published_at ? formatDateTime(item.published_at) : "newsflow"}</p>
+          <a href="${item.link}" target="_blank" rel="noreferrer">Czytaj źródło</a>
+        `,
+        "Brak driverów",
+        "Jeśli feed się nie pobrał, zerknij niżej do sekcji Świat i Kontekst."
+      );
+    }
+
+    async function fetchLifeSync() {
+      try {
+        const response = await fetch(`${LIFE_SYNC_URL}?t=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error("sync fetch failed");
+        const snapshot = await response.json();
+        renderLifeSync(snapshot);
+      } catch (error) {
+        document.getElementById("lifeSyncStamp").textContent = "Snapshot chwilowo niedostępny";
+      }
+    }
+
+    function unlockLife() {
+      document.getElementById("lockScreen").classList.add("hidden");
+      localStorage.setItem(LIFE_UNLOCK_KEY, "1");
+    }
+
+    document.getElementById("runLifeSearch").addEventListener("click", renderLifeLinks);
+    document.getElementById("lifeMode").addEventListener("change", renderLifeLinks);
+    document.getElementById("lifeQuery").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        renderLifeLinks();
+      }
+    });
+
+    document.querySelectorAll(".mode-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.getElementById("lifeMode").value = button.dataset.mode;
+        document.getElementById("lifeQuery").value = button.dataset.query;
+        renderLifeLinks();
+        document.getElementById("finderSection").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    document.getElementById("saveDailyIdea").addEventListener("click", () => {
+      const query = document.getElementById("lifeQuery").value.trim();
+      const mode = document.getElementById("lifeMode").selectedOptions[0].textContent;
+      if (!query) return;
+      addRitual(`${mode}: ${query}`, "Pomysł zapisany z Findera jako szybki trop na później.");
+      document.getElementById("ritualSection").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    document.getElementById("addRitualButton").addEventListener("click", () => {
+      const titleEl = document.getElementById("ritualTitle");
+      const noteEl = document.getElementById("ritualNote");
+      const title = titleEl.value.trim();
+      const note = noteEl.value.trim();
+      if (!title || !note) return;
+      addRitual(title, note);
+      titleEl.value = "";
+      noteEl.value = "";
+    });
+
+    document.getElementById("seedRitualsButton").addEventListener("click", () => {
+      const examples = [
+        { title: "Muza solo po cięższym dniu", note: "Wieczór resetu. Nie planuję już nic więcej, tylko dobry seans i spokojny spacer." },
+        { title: "CK Zamek + kawa", note: "Dzień na karmienie głowy. Najpierw wystawa lub wydarzenie, potem miejsce na notatki." },
+        { title: "Spacer z mapą i bez ciśnienia", note: "Nie szukam perfekcji. Wybieram jedną dzielnicę, jedną kawę i jedną rzecz po drodze." }
+      ];
+      safeWrite(LIFE_RITUALS_KEY, examples);
+      renderRituals();
+    });
+
+    document.getElementById("ritualList").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-delete-ritual]");
+      if (!button) return;
+      const rituals = safeRead(LIFE_RITUALS_KEY, []);
+      rituals.splice(Number(button.dataset.deleteRitual), 1);
+      safeWrite(LIFE_RITUALS_KEY, rituals);
+      renderRituals();
+    });
+
+    document.getElementById("saveThesisButton").addEventListener("click", () => {
+      const field = document.getElementById("thesisInput");
+      const text = field.value.trim();
+      if (!text) return;
+      addThesis(text);
+      field.value = "";
+    });
+
+    document.getElementById("seedThesisButton").addEventListener("click", () => {
+      addThesis("Najpierw patrzę, czy świat jest w trybie ryzyka czy ostrożności. Jeśli nie mam jasnej przewagi poznawczej, obserwuję i nie gonię ruchu.");
+    });
+
+    document.getElementById("thesisList").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-delete-thesis]");
+      if (!button) return;
+      const items = safeRead(LIFE_THESIS_KEY, []);
+      items.splice(Number(button.dataset.deleteThesis), 1);
+      safeWrite(LIFE_THESIS_KEY, items);
+      renderThesis();
+    });
+
+    document.getElementById("unlockButton").addEventListener("click", () => {
+      const pin = document.getElementById("pinInput").value.trim();
+      const error = document.getElementById("pinError");
+      if (pin !== PIN_CODE) {
+        error.textContent = "Nieprawidłowy PIN.";
+        return;
+      }
+      error.textContent = "";
+      unlockLife();
+    });
+
+    document.getElementById("pinInput").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        document.getElementById("unlockButton").click();
+      }
+    });
+
+    renderToday();
+    renderLifeLinks();
+    renderRituals();
+    renderThesis();
+    fetchLifeSync();
+    setInterval(fetchLifeSync, 300000);
+
+    if (localStorage.getItem(LIFE_UNLOCK_KEY) === "1") {
+      unlockLife();
+    }
+
+    if (window.TradingView) {
+      new TradingView.widget({
+        autosize: true,
+        symbol: "FOREXCOM:SPXUSD",
+        interval: "D",
+        timezone: "Europe/Warsaw",
+        theme: "dark",
+        style: "1",
+        locale: "pl",
+        toolbar_bg: "#111823",
+        enable_publishing: false,
+        hide_top_toolbar: false,
+        hide_legend: false,
+        allow_symbol_change: true,
+        withdateranges: true,
+        details: true,
+        studies: ["RSI@tv-basicstudies", "MASimple@tv-basicstudies"],
+        container_id: "tv_chart"
+      });
+    }
+  </script>
+</body>
+</html>

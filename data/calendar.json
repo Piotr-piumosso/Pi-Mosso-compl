@@ -1,0 +1,142 @@
+[
+  {
+    "id": "cal-001",
+    "date": "2026-02-14",
+    "title": "Koncert Walentynkowy",
+    "city": "Warszawa",
+    "venue": "Lotnisko Fryderyka Chopina",
+    "note": "Koncert walentynkowy",
+    "type": "done",
+    "photos": ["IMG_3404.jpeg", "IMG_3412.jpeg"]
+  },
+  {
+    "id": "cal-002",
+    "date": "2026-02-05",
+    "title": "Koncert w Bibliotece",
+    "city": "Środa Wielkopolska",
+    "venue": "Biblioteka Publiczna im. Berwińskiego",
+    "note": "Koncert kameralny",
+    "type": "done",
+    "photos": ["IMG_4826.jpeg"]
+  },
+  {
+    "id": "cal-003",
+    "date": "2025-11-16",
+    "title": "Świętomarciński Festiwal Muzyki Organowej i Kameralnej",
+    "city": "Konarzewo",
+    "venue": "",
+    "note": "Koncert festiwalowy",
+    "type": "done",
+    "photos": ["IMG_0764.jpeg","IMG_0769.jpeg","IMG_0771.jpeg","IMG_0775.jpeg","IMG_0781.jpeg","IMG_0785.jpeg","IMG_0787.jpeg"]
+  },
+  {
+    "id": "cal-004",
+    "date": "2025-11-09",
+    "title": "Wieczór Muzyki Klasycznej",
+    "city": "Skórzewo",
+    "venue": "",
+    "note": "Wspólnie z: Zhanna Rudaya, Hubert Trojanek",
+    "type": "done",
+    "photos": ["IMG_0582.jpeg","IMG_0583.jpeg","IMG_0588.jpeg"]
+  },
+  {
+    "id": "cal-005",
+    "date": "2025-10-19",
+    "title": "Festiwal im. Józefa Surzyńskiego",
+    "city": "Buk",
+    "venue": "Sanktuarium w Buku",
+    "note": "Koncert festiwalowy",
+    "type": "done",
+    "photos": ["IMG_1510.jpeg","IMG_1505.jpeg","IMG_1452.jpeg"]
+  },
+  {
+    "id": "cal-006",
+    "date": "2025-09-27",
+    "title": "Koncerty Muzyczne na Nowinie",
+    "city": "Poznań",
+    "venue": "Kościół Chrystusa Dobrego Pasterza",
+    "note": "Koncert cyklu",
+    "type": "done",
+    "photos": ["att.b5I97sVvTExqAAVecDAbJD41gshbO2Jv-o7YIZ01-Cs.jpeg","att.kdqT9tb9oBRNVL2LA55cEKCzRd7CQBmrTl_QXowcHMA.jpeg","att.61qb0nNdgno1nOSes5W5t8yP3fFsHdi4ZNDQfdnIPKs.jpeg","att.8pnp4-kzOAnP_WfwaJ7nCjz4XTp2_-4K-zEOOGYb6uU.jpeg","att.mJdj4JpJ2sA3XWorLKQTbqkXdBpyMzsB4KYfM-uAlzE.jpeg"]
+  },
+  {
+    "id": "cal-007",
+    "date": "2025-08-10",
+    "title": "IX Międzynarodowy Festiwal Muzyki Kameralnej i Organowej Ziemi Kłodzkiej",
+    "city": "Nowa Ruda",
+    "venue": "",
+    "note": "Koncert festiwalowy",
+    "type": "done",
+    "photos": ["100825-PM5.JPG","100825-Z2.JPG","100825-P4.JPG","100825-PM4.JPG","100825-PM3.JPG","100825-PM2.JPG","100825-PM1.JPG","100825-Z1.JPG","100825-P3.JPG","100825-P2.JPG","100825-P1.JPG","100825-PM.JPG","100825-Z.JPG","100825-P.JPG"]
+  },
+  {
+    "id": "cal-008",
+    "date": "2025-07-27",
+    "title": "Koncert Più Mosso",
+    "city": "Jakubów",
+    "venue": "Sanktuarium św. Jakuba",
+    "note": "Koncert okolicznościowy",
+    "type": "done",
+    "photos": ["270725-D1.JPG","270725-D.JPG","270725-PM.JPG"]
+  },
+  {
+    "id": "cal-009",
+    "date": "2025-03-08",
+    "title": "Dzień Kobiet",
+    "city": "Gola",
+    "venue": "",
+    "note": "Koncert okolicznościowy",
+    "type": "done",
+    "photos": ["080325-PM2.JPG","080325-PM.JPG"]
+  },
+  {
+    "id": "cal-010",
+    "date": "2024-11-17",
+    "title": "Koncert muzyki organowej i kameralnej",
+    "city": "Koźmin Wielkopolski",
+    "venue": "Kościół pw. św. Stanisława Biskupa i Męczennika",
+    "note": "Koncert okolicznościowy",
+    "type": "done",
+    "photos": ["171124-PL.JPG"]
+  },
+  {
+    "id": "cal-011",
+    "date": "2024-10-19",
+    "title": "Festiwal w Busku-Zdroju im. Feliksa Rączkowskiego",
+    "city": "Busko-Zdrój",
+    "venue": "",
+    "note": "Koncert festiwalowy",
+    "type": "done",
+    "photos": ["191024-D.JPG","191024-Z.JPG","191024-PM.JPG","201024-PM.JPG","201024-D2.JPG","201024-D1.JPG","201024-D.JPG"]
+  },
+  {
+    "id": "cal-012",
+    "date": "2024-09-25",
+    "title": "Festiwal Organy Wielkopolski",
+    "city": "Miejska Górka",
+    "venue": "",
+    "note": "Koncert festiwalowy",
+    "type": "done",
+    "photos": ["250924-D2.JPG","250924-D1.JPG","250924-PM.JPG","250924-Z.JPG","250924-D.JPG","250924-P.JPG"]
+  },
+  {
+    "id": "cal-013",
+    "date": "2024-03-24",
+    "title": "Koncert pasyjny",
+    "city": "Nowe Miasto nad Wartą",
+    "venue": "Kościół św. Trójcy",
+    "note": "Koncert okolicznościowy",
+    "type": "done",
+    "photos": ["240324.JPG"]
+  },
+  {
+    "id": "cal-014",
+    "date": "2023-11-11",
+    "title": "Dzień Niepodległości",
+    "city": "Nowe Miasto nad Wartą",
+    "venue": "",
+    "note": "Koncert okolicznościowy",
+    "type": "done",
+    "photos": ["111124.JPG"]
+  }
+]

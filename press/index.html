@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Press Kit — Più Mosso</title>
+<meta name="description" content="Materiały prasowe duetu Più Mosso — bio, zdjęcia, wideo, oferty. Skrzypce, organy i fortepian.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C0A08;--bg2:#080605;
+  --ink:#F6F0E4;--muted:rgba(246,240,228,.68);
+  --gold:#C5A557;--gold2:#B7903E;
+  --line:rgba(197,165,87,.18);
+  --r:14px;--max:1060px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter",sans-serif;font-size:16px;line-height:1.75;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Playfair Display",serif}
+h1{font-size:clamp(2.4rem,5vw,3.4rem);line-height:1.08}
+h2{font-size:1.5rem;color:var(--gold);margin-bottom:14px}
+h3{font-size:1.1rem;margin-bottom:6px}
+a{color:var(--gold);text-underline-offset:3px}
+a:hover{color:#e0c37a}
+p{color:var(--muted)}
+.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+/* Nav */
+nav{padding:18px 0;border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:"Playfair Display",serif;font-size:1.1rem;color:var(--ink);text-decoration:none}
+.brand span{color:var(--gold)}
+.nav-back{font-size:.85rem;color:var(--muted);text-decoration:none}
+.nav-back:hover{color:var(--gold)}
+
+/* Hero */
+.hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+.hero-badge{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:54ch;margin-top:16px;line-height:1.7}
+.hero-cta{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:.9rem;font-weight:600;text-decoration:none;transition:opacity .15s}
+.btn:hover{opacity:.82}
+.btn-gold{background:linear-gradient(180deg,#d4b06a,#b8903e);color:#100c07}
+.btn-outline{border:1px solid var(--line);color:var(--muted);background:rgba(246,240,228,.04)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Sections */
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:none}
+
+/* Bio tabs */
+.lang-tabs{display:flex;gap:4px;margin-bottom:22px}
+.ltab{padding:5px 14px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--muted);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .12s;font-family:"Inter",sans-serif}
+.ltab.on{background:rgba(197,165,87,.12);border-color:rgba(197,165,87,.35);color:var(--gold)}
+.bio-block{display:none}.bio-block.on{display:block}
+.bio-text{font-size:.97rem;color:var(--muted);line-height:1.8;max-width:70ch}
+.bio-text p{margin-bottom:12px}
+.bio-text p:last-child{margin-bottom:0}
+.bio-copy{margin-top:14px}
+
+/* Artists */
+.artists{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+.artist{background:rgba(246,240,228,.03);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.artist-role{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.artist p{font-size:.9rem;margin-top:8px}
+
+/* Photos */
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.photo-item{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);aspect-ratio:3/4;background:rgba(246,240,228,.03)}
+.photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.photo-item:hover img{transform:scale(1.03)}
+.photo-dl{position:absolute;bottom:8px;right:8px;background:rgba(8,6,5,.78);border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-size:.72rem;color:var(--gold);text-decoration:none;backdrop-filter:blur(6px);opacity:0;transition:opacity .2s}
+.photo-item:hover .photo-dl{opacity:1}
+.photo-note{font-size:.76rem;color:var(--muted);margin-top:10px}
+
+/* Video */
+.video-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);max-width:780px;margin-top:8px}
+video{width:100%;display:block}
+
+/* Facts */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.fact{background:rgba(246,240,228,.03);border:1px solid var(--line);border-radius:var(--r);padding:18px;text-align:center}
+.fact b{display:block;font-family:"Playfair Display",serif;font-size:1.9rem;color:var(--gold);line-height:1}
+.fact span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;display:block}
+
+/* Downloads */
+.dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.dl-card{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:rgba(246,240,228,.03);border:1px solid var(--line);border-radius:var(--r);text-decoration:none;transition:border-color .15s}
+.dl-card:hover{border-color:var(--gold)}
+.dl-info strong{display:block;font-size:.88rem;color:var(--ink)}
+.dl-info span{font-size:.74rem;color:var(--muted)}
+.dl-badge{font-size:.66rem;padding:3px 8px;border-radius:999px;background:rgba(197,165,87,.1);border:1px solid rgba(197,165,87,.25);color:var(--gold);white-space:nowrap;flex-shrink:0}
+
+/* Concerts */
+.concert-list{display:grid;gap:8px;margin-top:8px}
+.concert{display:flex;align-items:baseline;gap:14px;padding:10px 14px;background:rgba(246,240,228,.03);border:1px solid var(--line);border-radius:9px}
+.concert-date{font-size:.78rem;color:var(--gold);font-weight:600;white-space:nowrap;min-width:100px}
+.concert-name{font-size:.9rem;color:var(--ink)}
+.concert-place{font-size:.78rem;color:var(--muted);margin-left:auto;text-align:right;flex-shrink:0}
+
+/* Contact */
+.contact-box{max-width:520px;background:rgba(246,240,228,.03);border:1px solid var(--line);border-radius:var(--r);padding:28px 30px}
+.contact-box h3{font-size:1.2rem;margin-bottom:6px}
+.contact-box p{margin-bottom:16px}
+.contact-data{display:grid;gap:8px}
+.contact-row{display:flex;align-items:center;gap:10px;font-size:.9rem}
+.contact-row a{color:var(--ink);text-decoration:none}
+.contact-row a:hover{color:var(--gold)}
+.contact-icon{width:32px;height:32px;border-radius:8px;background:rgba(197,165,87,.1);border:1px solid rgba(197,165,87,.2);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+
+/* Footer */
+footer{padding:28px 0;text-align:center;font-size:.8rem;color:rgba(246,240,228,.3)}
+
+@media(max-width:760px){
+  .artists{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:repeat(2,1fr)}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .dl-grid{grid-template-columns:1fr}
+  .concert{flex-wrap:wrap;gap:4px}
+  .concert-place{margin-left:0;text-align:left}
+  .photo-dl{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="container">
+  <div class="nav-inner">
+    <a href="/" class="brand">Più <span>Mosso</span></a>
+    <a href="/" class="nav-back">← piumosso.pl</a>
+  </div>
+</div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+<div class="container">
+  <div class="hero-badge">Press Kit · Materiały prasowe</div>
+  <h1>Più Mosso</h1>
+  <p class="hero-sub">Duet skrzypiec, organów i fortepianu. Zofia Andersz i Piotr Górski. Repertuar klasyczny, kameralny i filmowy — dobierany do miejsca, akustyki i charakteru wydarzenia.</p>
+  <div class="hero-cta">
+    <a href="mailto:kontakt@piumosso.pl" class="btn btn-gold">Kontakt dla organizatorów</a>
+    <a href="#materialy" class="btn btn-outline">Pobierz materiały</a>
+  </div>
+</div>
+</div>
+
+<!-- Bio -->
+<section>
+<div class="container">
+  <h2>Biogram</h2>
+  <div class="lang-tabs">
+    <button class="ltab on" onclick="setBio('pl',this)">PL</button>
+    <button class="ltab" onclick="setBio('en',this)">EN</button>
+    <button class="ltab" onclick="setBio('de',this)">DE</button>
+  </div>
+
+  <div id="bio-pl" class="bio-block on">
+    <div class="bio-text">
+      <p>Più Mosso to duet skrzypiec, organów i fortepianu tworzony przez Zofię Andersz i Piotra Górskiego. Duet łączy klasyczne przygotowanie akademickie z naturalną swobodą sceniczną i umiejętnością dostosowania programu do konkretnego miejsca i okazji.</p>
+      <p>Zofia Andersz (skrzypce) kształci się pod kierunkiem prof. dr hab. Doroty Kwiecińskiej. Gra na festiwalach kameralnych, w projektach orkiestrowych i na koncertach solowych. Jej repertuar obejmuje muzykę klasyczną, filmową i rozrywkową.</p>
+      <p>Piotr Górski (organy, fortepian) jest laureatem konkursów organowych w Polsce i za granicą, absolwentem Akademii Muzycznej w Poznaniu z dyplomem z wyróżnieniem. Regularnie koncertuje na festiwalach i poszukuje projektów, w których klasyczne przygotowanie spotyka się z ciekawym miejscem lub niestandardowym programem.</p>
+      <p>Duet wystąpił m.in. na Festiwalu im. Józefa Surzyńskiego w Buku, Festiwalu im. Feliksa Rączkowskiego w Busku-Zdroju, IX Międzynarodowym Festiwalu Muzyki Kameralnej i Organowej Ziemi Kłodzkiej oraz w Sanktuarium Lotniska Chopina w Warszawie.</p>
+    </div>
+    <button class="btn btn-outline bio-copy" onclick="copyBio('pl')">Kopiuj biogram PL</button>
+  </div>
+
+  <div id="bio-en" class="bio-block">
+    <div class="bio-text">
+      <p>Più Mosso is a violin, organ and piano duo formed by Zofia Andersz and Piotr Górski. The ensemble combines rigorous academic training with natural stage presence and the ability to tailor programmes to specific venues and occasions.</p>
+      <p>Zofia Andersz (violin) studies under Professor Dorota Kwiecińska. She performs at chamber music festivals, orchestral projects and solo recitals, with a repertoire spanning classical, film and light music.</p>
+      <p>Piotr Górski (organ, piano) is a prize-winner at organ competitions in Poland and abroad and a graduate of the Poznań Academy of Music with distinction. He performs regularly at festivals and seeks projects where academic preparation meets unusual venues or non-standard programming.</p>
+      <p>The duo has performed at the Józef Surzyński Festival in Buk, the Feliks Rączkowski Festival in Busko-Zdrój, the IX International Chamber and Organ Music Festival of the Kłodzko Land, and at Warsaw Chopin Airport.</p>
+    </div>
+    <button class="btn btn-outline bio-copy" onclick="copyBio('en')">Copy bio EN</button>
+  </div>
+
+  <div id="bio-de" class="bio-block">
+    <div class="bio-text">
+      <p>Più Mosso ist ein Geigen-, Orgel- und Klavierduo, das von Zofia Andersz und Piotr Górski gegründet wurde. Das Ensemble verbindet eine solide akademische Ausbildung mit natürlicher Bühnenpräsenz und der Fähigkeit, Programme auf den jeweiligen Veranstaltungsort und Anlass abzustimmen.</p>
+      <p>Zofia Andersz (Violine) studiert bei Prof. Dr. habil. Dorota Kwiecińska. Sie tritt bei Kammermusikfestivals, Orchesterprojekten und Solokonzerten auf; ihr Repertoire umfasst klassische, Film- und Unterhaltungsmusik.</p>
+      <p>Piotr Górski (Orgel, Klavier) ist Preisträger von Orgelwettbewerben in Polen und im Ausland und Absolvent der Musikakademie Poznań mit Auszeichnung. Er konzertiert regelmäßig und sucht Projekte, bei denen klassische Ausbildung auf interessante Spielorte oder unkonventionelle Programme trifft.</p>
+      <p>Das Duo trat u. a. beim Józef-Surzyński-Festival in Buk, beim Feliks-Rączkowski-Festival in Busko-Zdrój, beim IX. Internationalen Kammermusik- und Orgelfestival des Glatzer Landes und im Warschauer Chopin-Flughafen auf.</p>
+    </div>
+    <button class="btn btn-outline bio-copy" onclick="copyBio('de')">Bio DE kopieren</button>
+  </div>
+
+  <div id="bio-copied" style="font-size:.8rem;color:var(--gold);margin-top:8px;min-height:1.2em"></div>
+</div>
+</section>
+
+<!-- Artyści -->
+<section>
+<div class="container">
+  <h2>Artyści</h2>
+  <div class="artists">
+    <div class="artist">
+      <div class="artist-role">Zofia Andersz · skrzypce</div>
+      <h3>Gra lekko, pewnie i z wyczuciem sali.</h3>
+      <p>Kształci się pod kierunkiem prof. dr hab. Doroty Kwiecińskiej. Gra na festiwalach kameralnych, w projektach orkiestrowych i na koncertach solowych. Repertuar obejmuje muzykę klasyczną, filmową i rozrywkową.</p>
+      <a href="/zofia/" style="font-size:.85rem;display:inline-block;margin-top:10px">Profil solowy →</a>
+    </div>
+    <div class="artist">
+      <div class="artist-role">Piotr Górski · organy i fortepian</div>
+      <h3>I miejsce Concorso Internazionale 2025. Absolwent z wyróżnieniem.</h3>
+      <p>Zdobywca I miejsca na Concorso Internazionale Don Vincenzo Vitti w Castellana Grotte (2025), III miejsca w Rumi (2024), wyróżnienia na Konkursie im. Rutkowskiego w Krakowie (2023) i I miejsca w Giżycku (2022). Absolwent Akademii Muzycznej w Poznaniu z dyplomem z wyróżnieniem.</p>
+      <a href="/piotrgorski/" style="font-size:.85rem;display:inline-block;margin-top:10px">Profil solowy →</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Fakty -->
+<section>
+<div class="container">
+  <h2>W skrócie</h2>
+  <div class="facts">
+    <div class="fact"><b id="fact-concerts">14+</b><span>Koncertów i festiwali</span></div>
+    <div class="fact"><b>3</b><span>Języki oferty</span></div>
+    <div class="fact"><b>2</b><span>Instrumenty</span></div>
+    <div class="fact"><b>2019</b><span>Rok założenia</span></div>
+  </div>
+</div>
+</section>
+
+<!-- Wideo -->
+<section>
+<div class="container">
+  <h2>Wideo</h2>
+  <div class="video-wrap">
+    <video controls preload="none" poster="../DSCF3970.jpeg">
+      <source src="../IMG_3283.webm" type="video/webm">
+      Twoja przeglądarka nie obsługuje wideo HTML5.
+    </video>
+  </div>
+</div>
+</section>
+
+<!-- Zdjęcia -->
+<section>
+<div class="container">
+  <h2>Zdjęcia prasowe</h2>
+  <div class="photo-grid">
+    <div class="photo-item">
+      <img src="../DSCF3970.jpeg" alt="Più Mosso — Zofia Andersz i Piotr Górski" loading="lazy">
+      <a href="../DSCF3970.jpeg" download class="photo-dl">Pobierz</a>
+    </div>
+    <div class="photo-item">
+      <img src="../galeria/IMG_0785.jpeg" alt="Più Mosso — koncert" loading="lazy">
+      <a href="../galeria/IMG_0785.jpeg" download class="photo-dl">Pobierz</a>
+    </div>
+    <div class="photo-item">
+      <img src="../galeria/IMG_0781.jpeg" alt="Più Mosso — koncert" loading="lazy">
+      <a href="../galeria/IMG_0781.jpeg" download class="photo-dl">Pobierz</a>
+    </div>
+    <div class="photo-item">
+      <img src="../galeria/IMG_0531.jpeg" alt="Più Mosso" loading="lazy">
+      <a href="../galeria/IMG_0531.jpeg" download class="photo-dl">Pobierz</a>
+    </div>
+    <div class="photo-item">
+      <img src="../galeria/IMG_0532.jpeg" alt="Più Mosso" loading="lazy">
+      <a href="../galeria/IMG_0532.jpeg" download class="photo-dl">Pobierz</a>
+    </div>
+    <div class="photo-item">
+      <img src="../galeria/IMG_0787.jpeg" alt="Più Mosso — festiwal" loading="lazy">
+      <a href="../galeria/IMG_0787.jpeg" download class="photo-dl">Pobierz</a>
+    </div>
+  </div>
+  <p class="photo-note">Zdjęcia do nieodpłatnego użytku w materiałach prasowych i programach festiwalowych. Prosimy o podanie źródła.</p>
+</div>
+</section>
+
+<!-- Wybrane koncerty -->
+<section>
+<div class="container">
+  <h2>Wybrane występy</h2>
+  <div class="concert-list" id="concerts-list">
+    <div style="font-size:.85rem;color:var(--muted)">Ładowanie…</div>
+  </div>
+</div>
+</section>
+
+<!-- Materiały do pobrania -->
+<section id="materialy">
+<div class="container">
+  <h2>Materiały do pobrania</h2>
+  <div class="dl-grid">
+    <a href="../concert-offer-pl.pdf" target="_blank" class="dl-card">
+      <div class="dl-info">
+        <strong>Oferta koncertowa</strong>
+        <span>Program, repertuar, warunki współpracy</span>
+      </div>
+      <span class="dl-badge">PDF · PL</span>
+    </a>
+    <a href="../concert-offer-en.pdf" target="_blank" class="dl-card">
+      <div class="dl-info">
+        <strong>Concert offer</strong>
+        <span>Programme, repertoire, cooperation terms</span>
+      </div>
+      <span class="dl-badge">PDF · EN</span>
+    </a>
+    <a href="../concert-offer-de.html" target="_blank" class="dl-card">
+      <div class="dl-info">
+        <strong>Konzertangebot</strong>
+        <span>Programm, Repertoire, Konditionen</span>
+      </div>
+      <span class="dl-badge">HTML · DE</span>
+    </a>
+    <a href="../wedding-offer-pl.pdf" target="_blank" class="dl-card">
+      <div class="dl-info">
+        <strong>Oferta ślubna</strong>
+        <span>Ceremonia, przyjęcie, repertuar weselny</span>
+      </div>
+      <span class="dl-badge">PDF · PL</span>
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- Kontakt -->
+<section>
+<div class="container">
+  <h2>Kontakt dla organizatorów</h2>
+  <div class="contact-box">
+    <h3>Piotr Górski</h3>
+    <p>Rezerwacje, pytania techniczne, materiały dodatkowe.</p>
+    <div class="contact-data">
+      <div class="contact-row">
+        <div class="contact-icon">✉</div>
+        <a href="mailto:kontakt@piumosso.pl">kontakt@piumosso.pl</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">✆</div>
+        <a href="tel:+48781010229">+48 781 010 229</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🌐</div>
+        <a href="https://piumosso.pl">piumosso.pl</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="container">
+    © Più Mosso · Zofia Andersz &amp; Piotr Górski · <a href="/">piumosso.pl</a>
+  </div>
+</footer>
+
+<script>
+// Bio tabs
+function setBio(lang, btn) {
+  document.querySelectorAll(".bio-block").forEach(b => b.classList.remove("on"));
+  document.querySelectorAll(".ltab").forEach(b => b.classList.remove("on"));
+  document.getElementById("bio-" + lang).classList.add("on");
+  btn.classList.add("on");
+}
+
+// Copy bio
+const BIO_TEXT = {
+  pl: `Più Mosso to duet skrzypiec, organów i fortepianu tworzony przez Zofię Andersz i Piotra Górskiego. Duet łączy klasyczne przygotowanie akademickie z naturalną swobodą sceniczną i umiejętnością dostosowania programu do konkretnego miejsca i okazji.\n\nZofia Andersz (skrzypce) kształci się pod kierunkiem prof. dr hab. Doroty Kwiecińskiej. Gra na festiwalach kameralnych, w projektach orkiestrowych i na koncertach solowych. Jej repertuar obejmuje muzykę klasyczną, filmową i rozrywkową.\n\nPiotr Górski (organy, fortepian) jest laureatem konkursów organowych w Polsce i za granicą, absolwentem Akademii Muzycznej w Poznaniu z dyplomem z wyróżnieniem. Regularnie koncertuje na festiwalach i poszukuje projektów, w których klasyczne przygotowanie spotyka się z ciekawym miejscem lub niestandardowym programem.\n\nDuet wystąpił m.in. na Festiwalu im. Józefa Surzyńskiego w Buku, Festiwalu im. Feliksa Rączkowskiego w Busku-Zdroju, IX Międzynarodowym Festiwalu Muzyki Kameralnej i Organowej Ziemi Kłodzkiej oraz w Sanktuarium Lotniska Chopina w Warszawie.`,
+  en: `Più Mosso is a violin, organ and piano duo formed by Zofia Andersz and Piotr Górski. The ensemble combines rigorous academic training with natural stage presence and the ability to tailor programmes to specific venues and occasions.\n\nZofia Andersz (violin) studies under Professor Dorota Kwiecińska. She performs at chamber music festivals, orchestral projects and solo recitals, with a repertoire spanning classical, film and light music.\n\nPiotr Górski (organ, piano) is a prize-winner at organ competitions in Poland and abroad and a graduate of the Poznań Academy of Music with distinction. He performs regularly at festivals and seeks projects where academic preparation meets unusual venues or non-standard programming.\n\nThe duo has performed at the Józef Surzyński Festival in Buk, the Feliks Rączkowski Festival in Busko-Zdrój, the IX International Chamber and Organ Music Festival of the Kłodzko Land, and at Warsaw Chopin Airport.`,
+  de: `Più Mosso ist ein Geigen-, Orgel- und Klavierduo, das von Zofia Andersz und Piotr Górski gegründet wurde. Das Ensemble verbindet eine solide akademische Ausbildung mit natürlicher Bühnenpräsenz und der Fähigkeit, Programme auf den jeweiligen Veranstaltungsort und Anlass abzustimmen.\n\nZofia Andersz (Violine) studiert bei Prof. Dr. habil. Dorota Kwiecińska. Sie tritt bei Kammermusikfestivals, Orchesterprojekten und Solokonzerten auf; ihr Repertoire umfasst klassische, Film- und Unterhaltungsmusik.\n\nPiotr Górski (Orgel, Klavier) ist Preisträger von Orgelwettbewerben in Polen und im Ausland und Absolvent der Musikakademie Poznań mit Auszeichnung. Er konzertiert regelmäßig und sucht Projekte, bei denen klassische Ausbildung auf interessante Spielorte oder unkonventionelle Programme trifft.\n\nDas Duo trat u. a. beim Józef-Surzyński-Festival in Buk, beim Feliks-Rączkowski-Festival in Busko-Zdrój, beim IX. Internationalen Kammermusik- und Orgelfestival des Glatzer Landes und im Warschauer Chopin-Flughafen auf.`
+};
+
+function copyBio(lang) {
+  navigator.clipboard.writeText(BIO_TEXT[lang]).then(() => {
+    const el = document.getElementById("bio-copied");
+    el.textContent = "Skopiowano ✓";
+    setTimeout(() => el.textContent = "", 2000);
+  });
+}
+
+// Load concerts from calendar.json
+fetch("../data/calendar.json?t=" + Math.floor(Date.now()/3600000))
+  .then(r => r.json())
+  .then(events => {
+    // Show only notable/festival concerts - filter by keywords and take top 8
+    const notable = events
+      .filter(e => /festiwal|festiv|sanktuarium|filharmon|lotnisko|kościół|church/i.test(e.title + " " + e.venue + " " + e.note))
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .slice(0, 8);
+    const all = events.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8);
+    const list = notable.length >= 4 ? notable : all;
+
+    document.getElementById("fact-concerts").textContent = events.length + "+";
+    document.getElementById("concerts-list").innerHTML = list.map(e => {
+      const [y, m, d] = e.date.split("-").map(Number);
+      const dt = new Date(y, m - 1, d);
+      const dateStr = dt.toLocaleDateString("pl-PL", { month: "long", year: "numeric" });
+      const place = [e.city, e.venue].filter(v => v && v !== "—").join(", ");
+      return `<div class="concert">
+        <span class="concert-date">${dateStr}</span>
+        <span class="concert-name">${e.title}</span>
+        ${place ? `<span class="concert-place">${place}</span>` : ""}
+      </div>`;
+    }).join("") || `<div style="font-size:.85rem;color:var(--muted)">Brak danych.</div>`;
+  })
+  .catch(() => {
+    document.getElementById("concerts-list").innerHTML = `<div style="font-size:.85rem;color:var(--muted)">Nie udało się załadować.</div>`;
+  });
+</script>
+</body>
+</html>

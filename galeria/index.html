@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Galeria — Più Mosso</title>
+<meta name="description" content="Galeria zdjęć Più Mosso." />
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg:#0C0A08; --bg-2:#080605;
+  --ink:#F6F0E4; --muted:rgba(246,240,228,.68);
+  --gold:#C5A557;
+  --line:rgba(197,165,87,.22);
+  --shadow:0 18px 44px rgba(0,0,0,.55);
+  --radius:14px;
+  --max:1200px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:"Inter",sans-serif;
+  font-size:17px; line-height:1.7;
+  background:
+    radial-gradient(1200px 650px at 50% -15%, rgba(197,165,87,.10), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:var(--gold);text-decoration:none}
+a:hover{color:#e0c37a}
+
+h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.3rem,4.5vw,3.3rem);
+  line-height:1.1;
+}
+
+.container{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:92px 20px 70px;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  border-bottom:1px solid var(--line);
+  padding-bottom:18px;
+  margin-bottom:28px;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.smallcaps{
+  font-size:.75rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ===== GALERIA (MASONRY, BEZ CIĘCIA) ===== */
+.gallery{
+  column-count:2;
+  column-gap:28px;
+}
+
+@media(max-width:900px){
+  .gallery{column-count:1}
+}
+
+.photo{
+  break-inside:avoid;
+  margin:0 0 28px;
+}
+
+.photo img{
+  width:100%;
+  height:auto;               /* KLUCZ: pełny kadr, bez cropu */
+  display:block;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  background:rgba(246,240,228,.03);
+  border:1px solid rgba(197,165,87,.14);
+}
+
+.caption{
+  margin-top:10px;
+  font-size:.95rem;
+  color:var(--muted);
+  display:flex;
+  justify-content:flex-end;  /* tylko autor, po prawej */
+}
+
+.caption span{
+  font-style:italic;
+  color:rgba(246,240,228,.62);
+}
+
+.footer{
+  margin-top:54px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  font-size:.9rem;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="top">
+      <div>
+        <div class="smallcaps">Più Mosso</div>
+        <h1>Galeria</h1>
+      </div>
+      <a href="/">Powrót</a>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+
+    <div class="footer">kontakt@piumosso.pl</div>
+
+  </div>
+
+<script>
+/*
+  Zdjęcia są w /galeria/
+  Każde zdjęcie = osobny obiekt z autorem (i tylko to pokazujemy)
+*/
+
+const PHOTOS = [
+  { file:"IMG_0531.jpeg", author:"fot. N. Zhang" },
+  { file:"IMG_0532.jpeg", author:"fot. N. Zhang" },
+
+  { file:"IMG_0764.jpeg", author:"fot. R. Szwarc" },
+  { file:"IMG_0769.jpeg", author:"fot. R. Szwarc" },
+  { file:"IMG_0771.jpeg", author:"fot. R. Szwarc" },
+  { file:"IMG_0775.jpeg", author:"fot. R. Szwarc" },
+  { file:"IMG_0781.jpeg", author:"fot. R. Szwarc" },
+  { file:"IMG_0785.jpeg", author:"fot. R. Szwarc" },
+  { file:"IMG_0787.jpeg", author:"fot. R. Szwarc" },
+
+  { file:"IMG_3404.jpeg", author:"fot. własne" },
+  { file:"IMG_3412.jpeg", author:"fot. własne" },
+  { file:"IMG_4826.jpeg", author:"fot. własne" }
+];
+
+const wrap=document.getElementById("gallery");
+
+PHOTOS.forEach(p=>{
+  const fig=document.createElement("figure");
+  fig.className="photo";
+  fig.innerHTML=`
+    <img src="${p.file}" alt="${p.author}" loading="lazy" decoding="async">
+    <figcaption class="caption"><span>${p.author}</span></figcaption>
+  `;
+  wrap.appendChild(fig);
+});
+
+/* Sprawdzenie rozdzielczości (wypis do konsoli, bez wpływu na wygląd) */
+window.addEventListener("load", () => {
+  document.querySelectorAll(".photo img").forEach(img => {
+    if (img.complete) {
+      console.log(`[GALERIA] ${img.getAttribute("src")} — ${img.naturalWidth}×${img.naturalHeight}px`);
+    } else {
+      img.addEventListener("load", () => {
+        console.log(`[GALERIA] ${img.getAttribute("src")} — ${img.naturalWidth}×${img.naturalHeight}px`);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>

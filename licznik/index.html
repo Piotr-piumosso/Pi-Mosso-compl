@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Più Mosso — Statystyki</title>
+
+  <style>
+    :root{
+      --bg:#0C0A08;
+      --bg2:#080605;
+      --panel:#12100D;
+      --ink:#F6F0E4;
+      --muted:rgba(246,240,228,.72);
+      --muted2:rgba(246,240,228,.55);
+      --gold:#C5A557;
+      --border:rgba(197,165,87,.22);
+      --border2:rgba(246,240,228,.10);
+      --shadow: 0 22px 70px rgba(0,0,0,.55);
+      --ok: rgba(197,165,87,.18);
+      --bad: rgba(240, 90, 90, .20);
+    }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(197,165,87,.12), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(246,240,228,.08), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--ink);
+      font-family: system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial;
+      line-height:1.45;
+      letter-spacing:.01em;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:26px 16px 34px;
+    }
+    .top{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:14px;
+    }
+    h1{
+      margin:0;
+      font-size:20px;
+      font-weight:650;
+      letter-spacing:.02em;
+    }
+    .sub{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--muted);
+      background:linear-gradient(180deg, rgba(197,165,87,.10), rgba(197,165,87,.03));
+      font-size:12.5px;
+      white-space:nowrap;
+    }
+    .dot{
+      width:8px; height:8px;
+      border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 0 4px rgba(197,165,87,.14);
+      flex:0 0 auto;
+    }
+
+    .card{
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(18,16,13,.94);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      border-bottom:1px solid var(--border2);
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    }
+    .bar .left{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      min-width:0;
+    }
+    .bar .title{
+      font-size:13px;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:60vw;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid var(--border);
+      background:rgba(197,165,87,.08);
+      color:var(--ink);
+      padding:8px 10px;
+      border-radius:12px;
+      font-size:12.5px;
+      cursor:pointer;
+      transition:transform .08s ease, background .2s ease;
+      user-select:none;
+    }
+    .btn:hover{ background:rgba(197,165,87,.12) }
+    .btn:active{ transform:translateY(1px) }
+    .btn.danger{
+      border-color: rgba(240,90,90,.35);
+      background: rgba(240,90,90,.10);
+    }
+    .btn.danger:hover{ background: rgba(240,90,90,.15) }
+
+    .grid{
+      display:grid;
+      gap:12px;
+      padding:14px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .box{
+      border:1px solid var(--border2);
+      border-radius:16px;
+      background:rgba(0,0,0,.16);
+      padding:12px 12px 10px;
+    }
+    .box h2{
+      margin:0 0 6px;
+      font-size:12.5px;
+      font-weight:650;
+      color:var(--muted);
+      letter-spacing:.02em;
+    }
+    .big{
+      font-size:26px;
+      font-weight:700;
+      margin-top:2px;
+    }
+    .small{
+      color:var(--muted2);
+      font-size:12px;
+      margin-top:6px;
+    }
+
+    .col-4{ grid-column: span 4; }
+    .col-6{ grid-column: span 6; }
+    .col-12{ grid-column: span 12; }
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid var(--border2);
+      background:rgba(0,0,0,.12);
+    }
+    th, td{
+      padding:10px 10px;
+      font-size:13px;
+      border-bottom:1px solid rgba(246,240,228,.08);
+      text-align:left;
+      vertical-align:top;
+    }
+    th{
+      color:var(--muted);
+      font-weight:650;
+      background:rgba(255,255,255,.02);
+    }
+    tr:last-child td{ border-bottom:none; }
+
+    /* Overlay PIN */
+    .lock{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      background:linear-gradient(180deg, rgba(0,0,0,.72), rgba(0,0,0,.82));
+      backdrop-filter: blur(6px);
+    }
+    .lock-inner{
+      width:min(520px, 100%);
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(18,16,13,.94);
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .lock-head{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:10px;
+    }
+    .mark{
+      width:36px;height:36px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(197,165,87,.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      color:var(--gold);
+      letter-spacing:.02em;
+    }
+    .lock-head .h{
+      margin:0;
+      font-size:14px;
+      font-weight:700;
+    }
+    .lock-head .p{
+      margin-top:4px;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      margin-top:10px;
+    }
+    .inp{
+      flex:1;
+      border:1px solid var(--border2);
+      background:rgba(0,0,0,.18);
+      color:var(--ink);
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:14px;
+      outline:none;
+    }
+    .note{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted2);
+    }
+    .err{
+      display:none;
+      margin-top:10px;
+      font-size:12.5px;
+      color:rgba(246,240,228,.75);
+      border:1px solid rgba(240,90,90,.35);
+      background: rgba(240,90,90,.12);
+      padding:8px 10px;
+      border-radius:12px;
+    }
+
+    @media (max-width:900px){
+      .col-4{ grid-column: span 6; }
+    }
+    @media (max-width:540px){
+      .col-4,.col-6{ grid-column: span 12; }
+      .pill{ display:none; }
+      .bar .title{ max-width:56vw; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Statystyki — Più Mosso</h1>
+        <div class="sub">Widok prywatny • wejście przez /licznik/ • źródła: UTM + referrer</div>
+      </div>
+      <div class="pill" aria-hidden="true"><span class="dot"></span> noindex / prywatne</div>
+    </div>
+
+    <div class="card">
+      <div class="bar">
+        <div class="left">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="title" id="envTitle">Panel</div>
+        </div>
+        <div class="right">
+          <button class="btn" id="markMineBtn" type="button">To moje urządzenie (nie licz)</button>
+          <button class="btn danger" id="resetBtn" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="grid" id="content" style="opacity:.08; filter: blur(2px); pointer-events:none;">
+        <div class="box col-4">
+          <h2>Wszystkie wejścia (zliczone)</h2>
+          <div class="big" id="total">0</div>
+          <div class="small" id="last">Ostatnie: —</div>
+        </div>
+
+        <div class="box col-4">
+          <h2>Najczęstsze źródło</h2>
+          <div class="big" id="topSource">—</div>
+          <div class="small" id="topSourceMeta">—</div>
+        </div>
+
+        <div class="box col-4">
+          <h2>Tryb liczenia</h2>
+          <div class="big" id="mode">LICZĘ</div>
+          <div class="small" id="modeMeta">—</div>
+        </div>
+
+        <div class="box col-12">
+          <h2>Źródła wejść (UTM / referrer)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Źródło (kategoria)</th>
+                <th>Wejścia</th>
+                <th>Detale</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+          <div class="small" style="margin-top:10px">
+            Najpewniejsze są linki z UTM (np. z mailingu/Facebooka). Referrer bywa ucinany przez przeglądarki i aplikacje.
+          </div>
+        </div>
+
+        <div class="box col-12">
+          <h2>Jak robić “YouTube-level” źródeł</h2>
+          <div class="small">
+            Używaj linków z UTM w mailach i postach, np.:<br>
+            <code style="color:var(--ink)">piumosso.pl/?utm_source=facebook&utm_medium=social&utm_campaign=koncerty</code><br>
+            <code style="color:var(--ink)">piumosso.pl/?utm_source=email&utm_medium=mailing&utm_campaign=oferta</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- PIN overlay -->
+      <div class="lock" id="lock">
+        <div class="lock-inner">
+          <div class="lock-head">
+            <div class="mark">PM</div>
+            <div>
+              <div class="h">Dostęp prywatny</div>
+              <div class="p">Wpisz PIN, aby wejść do panelu.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <input class="inp" id="pin" inputmode="numeric" autocomplete="one-time-code" placeholder="PIN" />
+            <button class="btn" id="go" type="button">Wejdź</button>
+          </div>
+
+          <div class="err" id="err">Zły PIN.</div>
+
+          <div class="note">
+            PIN jest po to, żeby nikt przypadkowy nie zobaczył panelu.
+            Jeśli chcesz ochronę “na serio” (logowanie) — Cloudflare Access.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ======================
+  // USTAWIENIA
+  // ======================
+  const PIN_CODE = "2137";
+
+  // localStorage keys
+  const KEY = "pm_stats_v1";
+  const KEY_ADMIN = "pm_stats_admin_v1";
+
+  // ======================
+  // POMOCNICZE
+  // ======================
+  function nowPL(){
+    return new Date().toLocaleString("pl-PL");
+  }
+
+  function safeParse(json, fallback){
+    try{ return JSON.parse(json); }catch(_){ return fallback; }
+  }
+
+  function getStats(){
+    const base = { total:0, last:"—", sources:{} };
+    return safeParse(localStorage.getItem(KEY), base) || base;
+  }
+
+  function setStats(s){
+    localStorage.setItem(KEY, JSON.stringify(s));
+  }
+
+  function isAdminDevice(){
+    return localStorage.getItem(KEY_ADMIN) === "1";
+  }
+
+  function setAdminDevice(){
+    localStorage.setItem(KEY_ADMIN, "1");
+  }
+
+  // ======================
+  // ŹRÓDŁO WEJŚCIA
+  // ======================
+  function classifySource(){
+    const u = new URL(window.location.href);
+    const qs = u.searchParams;
+
+    const utm_source = (qs.get("utm_source") || "").trim().toLowerCase();
+    const utm_medium = (qs.get("utm_medium") || "").trim().toLowerCase();
+    const utm_campaign = (qs.get("utm_campaign") || "").trim().toLowerCase();
+
+    // Referrer (może być pusty)
+    let ref = "";
+    try{
+      ref = document.referrer ? new URL(document.referrer).hostname.toLowerCase() : "";
+    }catch(_){
+      ref = "";
+    }
+
+    // 1) Najpierw UTM (najpewniejsze)
+    if (utm_source || utm_medium || utm_campaign){
+      const cat = categorizeByText(utm_source, utm_medium, ref);
+      return {
+        category: cat,
+        label: utm_source || "(utm)",
+        detail: `utm_source=${utm_source||"—"}; utm_medium=${utm_medium||"—"}; utm_campaign=${utm_campaign||"—"}`
+      };
+    }
+
+    // 2) Potem referrer (często działa, ale bywa ucinany)
+    if (ref){
+      const cat = categorizeByReferrer(ref);
+      return { category: cat, label: ref, detail: `referrer=${ref}` };
+    }
+
+    // 3) Direct/unknown
+    return { category: "Direct / Unknown", label: "direct", detail: "brak UTM i referrera" };
+  }
+
+  function categorizeByText(source, medium, ref){
+    const s = `${source} ${medium}`.trim();
+    if (s.includes("email") || s.includes("newsletter") || s.includes("mailing")) return "Email / Newsletter";
+    if (s.includes("facebook") || s.includes("fb")) return "Facebook";
+    if (s.includes("instagram") || s.includes("ig")) return "Instagram";
+    if (s.includes("messenger")) return "Messenger";
+    if (s.includes("youtube") || s.includes("yt")) return "YouTube";
+    if (s.includes("google") || s.includes("search") || s.includes("cpc")) return "Google / Search";
+    if (s.includes("whatsapp")) return "WhatsApp";
+    if (ref) return categorizeByReferrer(ref);
+    return "Other";
+  }
+
+  function categorizeByReferrer(host){
+    if (host.includes("facebook.") || host.includes("fb.")) return "Facebook";
+    if (host.includes("instagram.")) return "Instagram";
+    if (host.includes("messenger.")) return "Messenger";
+    if (host.includes("youtube.") || host.includes("youtu.be")) return "YouTube";
+    if (host.includes("google.")) return "Google / Search";
+    if (host.includes("bing.") || host.includes("duckduckgo.")) return "Search (Other)";
+    return "Other";
+  }
+
+  // ======================
+  // LICZENIE (tylko jeśli NIE admin)
+  // ======================
+  function countIfNotAdmin(){
+    if (isAdminDevice()) return;
+
+    const s = getStats();
+    const src = classifySource();
+    const key = `${src.category}::${src.label}`;
+
+    s.total += 1;
+    s.last = nowPL();
+
+    if (!s.sources[key]){
+      s.sources[key] = { category: src.category, label: src.label, count: 0, lastDetail: "" };
+    }
+    s.sources[key].count += 1;
+    s.sources[key].lastDetail = src.detail;
+
+    setStats(s);
+  }
+
+  // ======================
+  // RENDER PANELU
+  // ======================
+  function render(){
+    const envTitle = document.getElementById("envTitle");
+    envTitle.textContent = location.hostname;
+
+    const s = getStats();
+
+    document.getElementById("total").textContent = String(s.total || 0);
+    document.getElementById("last").textContent = `Ostatnie: ${s.last || "—"}`;
+
+    const admin = isAdminDevice();
+    document.getElementById("mode").textContent = admin ? "NIE LICZĘ" : "LICZĘ";
+    document.getElementById("modeMeta").textContent = admin
+      ? "To urządzenie jest oznaczone jako Twoje."
+      : "Zliczane są wejścia z UTM/referrerem.";
+
+    // Top source
+    const entries = Object.values(s.sources || {});
+    entries.sort((a,b)=> (b.count||0) - (a.count||0));
+    const top = entries[0];
+    document.getElementById("topSource").textContent = top ? top.category : "—";
+    document.getElementById("topSourceMeta").textContent = top ? `${top.label} • ${top.count}` : "—";
+
+    // Table
+    const tbody = document.getElementById("rows");
+    tbody.innerHTML = "";
+
+    if (!entries.length){
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>—</td><td>0</td><td>Brak danych. Dodaj UTM do linków i poczekaj na wejścia.</td>`;
+      tbody.appendChild(tr);
+      return;
+    }
+
+    for (const e of entries){
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><strong>${escapeHtml(e.category)}</strong><br><span style="color:var(--muted2)">${escapeHtml(e.label)}</span></td>
+        <td><strong>${e.count}</strong></td>
+        <td><span style="color:var(--muted)">${escapeHtml(e.lastDetail || "")}</span></td>
+      `;
+      tbody.appendChild(tr);
+    }
+  }
+
+  function escapeHtml(str){
+    return (str || "").replace(/[&<>"']/g, m => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[m]));
+  }
+
+  // ======================
+  // UI: PIN + akcje
+  // ======================
+  const lock = document.getElementById("lock");
+  const content = document.getElementById("content");
+  const err = document.getElementById("err");
+  const pin = document.getElementById("pin");
+  const go = document.getElementById("go");
+
+  function unlock(){
+    lock.style.display = "none";
+    content.style.opacity = "1";
+    content.style.filter = "none";
+    content.style.pointerEvents = "auto";
+    sessionStorage.setItem("pm_stats_unlocked", "1");
+    err.style.display = "none";
+    render();
+  }
+
+  function checkPin(){
+    if ((pin.value || "").trim() === PIN_CODE) return unlock();
+    err.style.display = "block";
+    pin.select();
+  }
+
+  go.addEventListener("click", checkPin);
+  pin.addEventListener("keydown", (e)=>{ if (e.key === "Enter") checkPin(); });
+
+  document.getElementById("markMineBtn").addEventListener("click", ()=>{
+    setAdminDevice();
+    render();
+    alert("OK. To urządzenie nie będzie zliczane.");
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", ()=>{
+    const sure = confirm("Na pewno zresetować dane licznika na tym urządzeniu?");
+    if (!sure) return;
+    localStorage.removeItem(KEY);
+    render();
+  });
+
+  // ======================
+  // START
+  // ======================
+  // Liczymy od razu (ale nie na urządzeniu admin)
+  countIfNotAdmin();
+
+  // Jeśli już odblokowane w tej sesji — nie pokazuj PIN
+  if (sessionStorage.getItem("pm_stats_unlocked") === "1") {
+    unlock();
+  } else {
+    // zablokowane do PIN
+    render(); // od razu wypełnij liczby (po PIN pokażemy)
+  }
+</script>
+</body>
+</html>

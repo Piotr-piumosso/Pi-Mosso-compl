@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Kalendarium — Più Mosso</title>
+<meta name="description" content="Kalendarium koncertów Più Mosso — wybrane wydarzenia i nadchodzące terminy." />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg:#0C0A08; --bg-2:#080605;
+  --ink:#F6F0E4; --muted:rgba(246,240,228,.74);
+  --gold:#C5A557; --gold-2:#B7903E;
+  --line:rgba(197,165,87,.22);
+  --shadow:0 18px 44px rgba(0,0,0,.55);
+  --radius:14px; --max:1100px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Inter",sans-serif;
+  font-size:17px; line-height:1.75;
+  background:
+    radial-gradient(1200px 650px at 50% -15%, rgba(197,165,87,.10), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--gold);text-underline-offset:3px;text-decoration-color:rgba(197,165,87,.45)}
+a:hover{color:#e0c37a;text-decoration-color:rgba(224,195,122,.65)}
+h1,h2{font-family:"Playfair Display",serif}
+h1{font-size:clamp(2.2rem,4.4vw,3.2rem);line-height:1.1}
+h2{font-size:1.35rem;color:var(--gold);margin-top:26px}
+.container{max-width:var(--max);margin:0 auto;padding:92px 20px 60px}
+.top{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  border-bottom:1px solid rgba(197,165,87,.18);
+  padding-bottom:18px;margin-bottom:22px;
+}
+.smallcaps{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,240,228,.84)}
+.card{
+  background:linear-gradient(180deg, rgba(26,20,16,.96), rgba(20,16,13,.92));
+  border:1px solid rgba(197,165,87,.18);
+  border-radius:var(--radius);
+  padding:20px 22px;
+  box-shadow:var(--shadow);
+}
+.event{display:grid;gap:10px}
+.event .meta{display:flex;gap:10px;flex-wrap:wrap;color:rgba(246,240,228,.82);font-size:.95rem}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(197,165,87,.22);
+  background:rgba(246,240,228,.05);
+  padding:4px 10px;border-radius:999px;
+  font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
+}
+.list{display:grid;gap:14px;margin-top:14px}
+.footer{margin-top:32px;color:rgba(246,240,228,.58);font-size:.9rem}
+.note{color:rgba(246,240,228,.82)}
+
+/* Galeria w kartach */
+.photos{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+@media(max-width:860px){ .photos{grid-template-columns:repeat(2, minmax(0,1fr));} }
+@media(max-width:480px){ .photos{grid-template-columns:repeat(2, minmax(0,1fr));gap:8px;} }
+
+.photo{
+  display:block;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(197,165,87,.16);
+  box-shadow:0 10px 26px rgba(0,0,0,.35);
+  background:rgba(246,240,228,.03);
+  transform:translateY(0);
+  transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.photo:hover{
+  transform:translateY(-2px);
+  border-color:rgba(224,195,122,.45);
+  box-shadow:0 14px 34px rgba(0,0,0,.45);
+}
+.photo img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  display:block;
+  filter:saturate(.96) contrast(1.06);
+}
+@media(max-width:480px){ .photo img{height:140px;} }
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="top">
+      <div>
+        <div class="smallcaps">Più Mosso</div>
+        <h1>Kalendarium</h1>
+      </div>
+      <div>
+        <a href="/" aria-label="Powrót na stronę główną">Powrót</a>
+      </div>
+    </div>
+
+    <p style="color:rgba(246,240,228,.84)">
+      Wybrane koncerty Più Mosso
+    </p>
+
+    <h2>Wydarzenia</h2>
+    <div class="list" id="events"></div>
+
+    <div class="footer">
+      Kontakt: <a href="mailto:kontakt@piumosso.pl">kontakt@piumosso.pl</a>
+    </div>
+  </div>
+
+<script>
+function formatPL(iso){
+  const [y,m,d]=iso.split("-").map(Number);
+  const dt=new Date(y,m-1,d);
+  return dt.toLocaleDateString("pl-PL",{day:"2-digit",month:"long",year:"numeric"});
+}
+function esc(s){
+  return String(s ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));
+}
+function photosHTML(arr, altBase){
+  const a=(arr||[]).filter(Boolean);
+  if(!a.length) return "";
+  return `<div class="photos" aria-label="Galeria zdjęć">${a.map(fn=>`
+    <a class="photo" href="${esc(fn)}" target="_blank" rel="noopener">
+      <img src="${esc(fn)}" alt="${esc(altBase)}" loading="lazy" decoding="async">
+    </a>`).join("")}</div>`;
+}
+function renderEvents(events){
+  const today = new Date().toISOString().slice(0,10);
+  const wrap = document.getElementById("events");
+  wrap.innerHTML = "";
+  const sorted = [...events].sort((a,b)=>b.date.localeCompare(a.date));
+  // Nadchodzące (upcoming) na górze
+  const upcoming = sorted.filter(e => e.date >= today);
+  const past     = sorted.filter(e => e.date <  today);
+  if(upcoming.length){
+    const lbl = document.createElement("h2");
+    lbl.textContent = "Nadchodzące";
+    wrap.appendChild(lbl);
+    upcoming.forEach(e => wrap.appendChild(makeCard(e)));
+  }
+  if(past.length){
+    const lbl = document.createElement("h2");
+    lbl.style.marginTop = upcoming.length ? "32px" : "0";
+    lbl.textContent = "Archiwum";
+    wrap.appendChild(lbl);
+    past.forEach(e => wrap.appendChild(makeCard(e)));
+  }
+}
+function makeCard(e){
+  const place = `${e.city}${e.venue && e.venue!=="—" ? " • "+e.venue : ""}`;
+  const el = document.createElement("div");
+  el.className = "card event";
+  el.innerHTML = `
+    <div class="meta">
+      <span class="badge">${formatPL(e.date)}</span>
+      <span>${esc(place)}</span>
+    </div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.25rem;line-height:1.25">${esc(e.title)}</div>
+    ${e.note ? `<div class="note">${esc(e.note)}</div>` : ""}
+    ${photosHTML(e.photos||[], `${e.title} (${formatPL(e.date)})`)}
+  `;
+  return el;
+}
+// Załaduj z JSON (cache-bust co godzinę)
+const ts = Math.floor(Date.now()/3600000);
+fetch(`../data/calendar.json?t=${ts}`)
+  .then(r => r.json())
+  .then(renderEvents)
+  .catch(() => { document.getElementById("events").innerHTML = '<p style="color:rgba(246,240,228,.5)">Nie udało się załadować kalendarza.</p>'; });
+</script>
+</body>
+</html>
