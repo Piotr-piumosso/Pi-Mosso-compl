@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Private Commissions — Più Mosso</title>
+<meta name="description" content="Three bespoke engagements for clients who understand the difference between entertainment and cultural investment. By Piotr Górski and Zofia Andersz.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://piumosso.com.pl/ultra-luxe/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080806;
+  --bg2: #0e0d0b;
+  --ink: #f0ebe0;
+  --muted: rgba(240,235,224,.55);
+  --gold: #c9a96e;
+  --gold-pale: rgba(201,169,110,.14);
+  --line: rgba(201,169,110,.16);
+  --max: 860px;
+  --max-wide: 1100px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: .01em;
+}
+
+a { color: inherit; text-decoration: none; }
+p { color: var(--muted); }
+em { font-style: italic; color: var(--ink); }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.6rem 2.4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(8,8,6,.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(201,169,110,.08);
+}
+.nav-logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.12rem;
+  font-weight: 400;
+  letter-spacing: .1em;
+  color: var(--ink);
+}
+.nav-logo span { color: var(--gold); font-style: italic; }
+.nav-back {
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--gold); }
+
+/* ── OPENING ── */
+.opening {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 2.4rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.opening-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,169,110,.05), transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+}
+.opening-rule {
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 10%, rgba(201,169,110,.12) 50%, transparent 90%);
+}
+.opening-inner {
+  position: relative;
+  max-width: var(--max);
+  margin: 0 auto;
+  width: 100%;
+}
+.opening-tag {
+  font-size: .68rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.opening-tag::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .5;
+}
+.opening h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: .02em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+.opening h1 em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+.opening-lead {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 52ch;
+  line-height: 1.85;
+  margin-bottom: 3.2rem;
+}
+.opening-note {
+  font-size: .74rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,.45);
+  padding-left: 44px;
+  position: relative;
+}
+.opening-note::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 50%;
+  width: 28px; height: 1px;
+  background: rgba(201,169,110,.3);
+}
+
+/* ── PACKAGE PANELS ── */
+.pkg-panel {
+  padding: 7rem 2.4rem;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.pkg-panel:nth-child(odd) { background: var(--bg); }
+.pkg-panel:nth-child(even) { background: var(--bg2); }
+
+.pkg-inner {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 5rem;
+  align-items: start;
+}
+.pkg-left { position: sticky; top: 7rem; }
+
+.pkg-number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(201,169,110,.18);
+  letter-spacing: .04em;
+  margin-bottom: .8rem;
+}
+.pkg-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: .04em;
+  line-height: 1.2;
+  margin-bottom: .4rem;
+}
+.pkg-subtitle {
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+.pkg-investment {
+  display: inline-block;
+  padding: .6rem 1.2rem;
+  border: 1px solid rgba(201,169,110,.28);
+  border-radius: 2px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: .04em;
+  margin-bottom: 2.4rem;
+}
+.pkg-investment small {
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,.5);
+  display: block;
+  margin-bottom: .25rem;
+}
+.pkg-enquire {
+  display: block;
+  width: 100%;
+  padding: .9rem 1.2rem;
+  background: transparent;
+  border: 1px solid rgba(201,169,110,.3);
+  color: var(--muted);
+  font-family: "Inter", sans-serif;
+  font-size: .76rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .25s, color .25s, background .25s;
+  margin-top: 1.6rem;
+}
+.pkg-enquire:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-pale);
+}
+
+/* right column */
+.pkg-right {}
+
+.pkg-positioning {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.22rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 2.4rem;
+  padding-left: 1.4rem;
+  border-left: 1px solid rgba(201,169,110,.3);
+}
+
+.pkg-what-label {
+  font-size: .64rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.pkg-what {
+  list-style: none;
+  margin-bottom: 2.8rem;
+}
+.pkg-what li {
+  font-size: .88rem;
+  color: var(--muted);
+  padding: .65rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  line-height: 1.55;
+}
+.pkg-what li::before {
+  content: "–";
+  color: var(--gold);
+  opacity: .6;
+  flex-shrink: 0;
+  font-family: "Cormorant Garamond", serif;
+}
+.pkg-what li em {
+  color: var(--ink);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.pkg-case {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.pkg-case p {
+  font-size: .94rem;
+  color: var(--muted);
+  line-height: 1.85;
+}
+.pkg-case .argument {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.6;
+  font-style: italic;
+  margin-top: .4rem;
+}
+
+/* ── DIVIDER QUOTE ── */
+.quote-panel {
+  padding: 6rem 2.4rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.quote-inner { max-width: 620px; margin: 0 auto; }
+.quote-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(240,235,224,.6);
+  margin-bottom: 1.4rem;
+}
+.quote-attr {
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,.4);
+}
+
+/* ── CLOSING / CONTACT ── */
+.closing {
+  padding: 7rem 2.4rem;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+.closing-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.closing-tag {
+  font-size: .68rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.closing-tag::before {
+  content: "";
+  width: 32px; height: 1px;
+  background: var(--gold);
+  opacity: .5;
+}
+.closing h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 1.6rem;
+  max-width: 22ch;
+}
+.closing-body {
+  font-size: .96rem;
+  color: var(--muted);
+  max-width: 52ch;
+  line-height: 1.85;
+  margin-bottom: 2.8rem;
+}
+.closing-contact {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+.closing-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: .8rem;
+  font-size: .88rem;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(201,169,110,.15);
+  padding-bottom: .3rem;
+  width: fit-content;
+  transition: color .2s, border-color .2s;
+}
+.closing-contact a:hover { color: var(--gold); border-color: var(--gold); }
+.closing-contact .label {
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,.4);
+  margin-top: 1.6rem;
+  margin-bottom: .6rem;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  padding: 2rem 2.4rem;
+  border-top: 1px solid rgba(201,169,110,.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-footer span {
+  font-size: .72rem;
+  letter-spacing: .08em;
+  color: rgba(201,169,110,.25);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .pkg-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .pkg-left { position: static; }
+}
+@media (max-width: 600px) {
+  .nav { padding: 1.2rem 1.4rem; }
+  .opening { padding: 0 1.4rem 4rem; }
+  .pkg-panel { padding: 4.5rem 1.4rem; }
+  .closing { padding: 4.5rem 1.4rem; }
+  .quote-panel { padding: 4rem 1.4rem; }
+  .site-footer { padding: 1.6rem 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="https://piumosso.com.pl/" class="nav-logo">Più <span>Mosso</span></a>
+  <a href="https://piumosso.com.pl/" class="nav-back">← Corporate engagements</a>
+</nav>
+
+<!-- Opening -->
+<section class="opening">
+  <div class="opening-bg" aria-hidden="true"></div>
+  <div class="opening-rule" aria-hidden="true"></div>
+  <div class="opening-inner">
+    <div class="opening-tag">Private commissions · Più Mosso</div>
+    <h1>
+      Three engagements<br>
+      for those who understand<br>
+      <em>the difference.</em>
+    </h1>
+    <p class="opening-lead">
+      Entertainment ends when the evening does.
+      These engagements are designed around what remains:
+      the reputation of those who chose them, the permanence
+      of what was created, and the story told by people
+      who were present.
+    </p>
+    <p class="opening-note">Piotr Górski &amp; Zofia Andersz · Active since 2023 · By private enquiry only</p>
+  </div>
+</section>
+
+<!-- Package I: Legacy -->
+<section class="pkg-panel" id="legacy">
+  <div class="pkg-inner">
+
+    <div class="pkg-left">
+      <div class="pkg-number">I</div>
+      <div class="pkg-name">Legacy</div>
+      <div class="pkg-subtitle">Corporate Residency</div>
+      <div class="pkg-investment">
+        <small>Investment from</small>
+        € 18 000 per season
+      </div>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.7;">
+        Annual contract available at € 32 000.
+        One residency per industry vertical, per city.
+      </p>
+      <a class="pkg-enquire" href="mailto:kontakt@piumosso.pl?subject=Legacy%20Residency%20Enquiry">
+        Request a conversation
+      </a>
+    </div>
+
+    <div class="pkg-right">
+      <p class="pkg-positioning">
+        Your competitors hold networking dinners.
+        You hold cultural events that your clients
+        request invitations to — years after the fact.
+      </p>
+
+      <p class="pkg-what-label">What you are acquiring</p>
+      <ul class="pkg-what">
+        <li><em>Six exclusive performances</em> per season — one per month, or structured around your corporate calendar, client dinners, and leadership events</li>
+        <li><em>Full artistic exclusivity</em> within your industry segment in the contracted city: we do not perform for direct competitors during the partnership</li>
+        <li><em>Bespoke programme design</em> for each event — aligned with your brand identity, occasion, and the specific acoustic of your space</li>
+        <li><em>Two original arrangements</em> composed by Piotr Górski per year, built around your institution's character — pieces that exist only in your context</li>
+        <li><em>Professional audio recordings</em> of each performance — archive-quality, delivered for your internal communications and event documentation</li>
+        <li><em>Artist biography and press materials</em> updated for your institution — for invitations, programme notes, and communications with your network</li>
+      </ul>
+
+      <div class="pkg-case">
+        <p>
+          There is a particular tier of client relationship that cannot be built through hospitality alone.
+          What moves people — what generates genuine loyalty and the kind of word-of-mouth
+          that cannot be bought — is the sense of being included in something
+          that was chosen with care, not procured from a catalogue.
+        </p>
+        <p>
+          A Legacy Residency reframes what your institution offers those evenings.
+          It is not background music. It is the reason the evening is worth attending.
+          Your clients leave having experienced something precise and considered —
+          and they associate that precision with you.
+        </p>
+        <p class="argument">
+          The most durable brand asset a private institution can hold
+          is the belief, among those who matter, that it has taste.
+          This residency is designed to establish exactly that.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Divider quote -->
+<div class="quote-panel">
+  <div class="quote-inner">
+    <p class="quote-text">
+      "The measure of a private space is what it allows you to feel —
+      and what it gives you to remember."
+    </p>
+    <p class="quote-attr">Piotr Górski · Più Mosso</p>
+  </div>
+</div>
+
+<!-- Package II: Tableau -->
+<section class="pkg-panel" id="tableau">
+  <div class="pkg-inner">
+
+    <div class="pkg-left">
+      <div class="pkg-number">II</div>
+      <div class="pkg-name">Tableau</div>
+      <div class="pkg-subtitle">Private Estate Concert</div>
+      <div class="pkg-investment">
+        <small>Investment from</small>
+        € 22 000 per event
+      </div>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.7;">
+        Available across Central Europe, DACH,
+        and by arrangement internationally.
+      </p>
+      <a class="pkg-enquire" href="mailto:kontakt@piumosso.pl?subject=Tableau%20Concert%20Enquiry">
+        Request a conversation
+      </a>
+    </div>
+
+    <div class="pkg-right">
+      <p class="pkg-positioning">
+        Your residence has always been exceptional.
+        A private concert makes it legendary in the memory
+        of everyone who was present that evening.
+      </p>
+
+      <p class="pkg-what-label">What you are acquiring</p>
+      <ul class="pkg-what">
+        <li><em>One exclusive concert</em> designed for and performed at your private property — residence, estate, alpine chalet, or venue of your choice</li>
+        <li><em>Full acoustic consultation</em> prior to the event: the programme is built around the specific resonance, dimensions, and character of your space, not transposed from a concert hall</li>
+        <li><em>Complete logistics</em> managed by the duo — travel, accommodation, instrument arrangements, and setup coordination — so the evening requires nothing from you except your presence</li>
+        <li><em>Professional audio recording</em> of the performance, delivered in archival format</li>
+        <li><em>Thirty numbered copies</em> of a vinyl record: the recording of your concert, pressed with your name, property, and date. Each copy hand-signed by Piotr Górski and Zofia Andersz</li>
+        <li><em>Twelve-month programme exclusivity</em>: the specific programme performed at your event will not be performed elsewhere for one year</li>
+        <li><em>Programme notes</em> authored by Piotr Górski, printed and delivered ahead of the concert — for your guests</li>
+      </ul>
+
+      <div class="pkg-case">
+        <p>
+          There is a specific quality of evening that happens when the music was chosen for this room,
+          for these people, for this occasion — and everyone present can feel that it was.
+          Not because of the technical precision of the performance, but because of the intention
+          behind every decision: the repertoire, the sequence, the dynamics,
+          the length of the silences between pieces.
+        </p>
+        <p>
+          The vinyl record is the physical evidence that the evening happened.
+          Thirty copies, numbered. Given to whom you choose. Each one carries the date,
+          the place, your name. A year from now, the people who received one
+          will have something on their shelf that cannot be replicated.
+        </p>
+        <p class="argument">
+          The value of the Tableau engagement is not measured in hours of music.
+          It is measured in the number of conversations your guests will begin
+          with the words: "I was there when — "
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Divider quote -->
+<div class="quote-panel">
+  <div class="quote-inner">
+    <p class="quote-text">
+      "Every collector of fine art understands that value exists
+      beyond what can be sold. A commissioned composition
+      is the only work that plays itself."
+    </p>
+    <p class="quote-attr">Piotr Górski · Più Mosso</p>
+  </div>
+</div>
+
+<!-- Package III: Monolith -->
+<section class="pkg-panel" id="monolith">
+  <div class="pkg-inner">
+
+    <div class="pkg-left">
+      <div class="pkg-number">III</div>
+      <div class="pkg-name">Monolith</div>
+      <div class="pkg-subtitle">Commissioned Composition</div>
+      <div class="pkg-investment">
+        <small>Investment from</small>
+        € 45 000
+      </div>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.7;">
+        Duration: eight to fifteen minutes.
+        Full transfer of copyright and artistic ownership.
+      </p>
+      <a class="pkg-enquire" href="mailto:kontakt@piumosso.pl?subject=Monolith%20Commission%20Enquiry">
+        Request a conversation
+      </a>
+    </div>
+
+    <div class="pkg-right">
+      <p class="pkg-positioning">
+        A commissioned musical composition is the rarest kind of acquisition:
+        an asset that requires performance to exist,
+        and in that performance, your taste becomes audible to the world.
+      </p>
+
+      <p class="pkg-what-label">What you are acquiring</p>
+      <ul class="pkg-what">
+        <li><em>An original composition</em> by Piotr Górski — eight to fifteen minutes for violin and organ or piano — developed over three months with as much or as little input from you as you wish to give</li>
+        <li><em>Full transfer of copyright and ownership</em>: the original handwritten manuscript, the engraved score, all digital files, and all associated rights transfer to you upon delivery</li>
+        <li><em>World premiere performance</em> by Piotr Górski and Zofia Andersz at a venue of your choice — private, or public if you wish to mark the occasion formally</li>
+        <li><em>Studio recording of the world premiere</em>, mastered to archival quality, delivered in both lossless digital and physical formats</li>
+        <li><em>Certificate of artistic provenance</em>, signed by Piotr Górski, countersigned by a notary — documenting the creation, the commission, and the transfer of ownership</li>
+        <li><em>Naming rights</em>: the piece may bear any title you choose, including a dedication, a place name, or no name at all</li>
+        <li>All future public performances of the work — by any ensemble — require <em>your authorisation</em>. You may license, restrict, or place the work into permanent privacy</li>
+      </ul>
+
+      <div class="pkg-case">
+        <p>
+          Every significant collection tells a story about the judgment of the person who built it.
+          A painting, a sculpture, a rare manuscript — each of these exists independently
+          of whoever owns it. A commissioned composition does not.
+          Until it is performed, it has no presence in the world.
+          The decision to commission it, to have it played, to give it a name —
+          these are authorial acts, and they belong to you.
+        </p>
+        <p>
+          The Monolith is not an entertainment product.
+          It is the creation of an asset that increases in significance over time,
+          as Piotr Górski's career develops and the rarity of early commissions
+          becomes part of the work's documented history.
+          What you purchase now is a piece that did not exist before you asked for it.
+          What you hold afterward is something that exists because you chose to.
+        </p>
+        <p class="argument">
+          Unlike any other asset in a private collection,
+          this one can be heard without entering a room —
+          and whoever hears it will know who it belongs to.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Closing / Contact -->
+<section class="closing" id="contact">
+  <div class="closing-inner">
+    <div class="closing-tag">How to proceed</div>
+    <h2>Begin with a conversation, not a form.</h2>
+    <p class="closing-body">
+      Each of these engagements begins with a direct conversation
+      between us. There is no application process, no call-for-submissions,
+      no standard contract. We take on three to four engagements of this nature per year.
+      If the timing and the context are right, we will know within the first exchange.
+    </p>
+    <div class="closing-contact">
+      <p class="label">Write directly to Piotr Górski</p>
+      <a href="mailto:kontakt@piumosso.pl">kontakt@piumosso.pl</a>
+      <a href="tel:+48781010229">+48 781 010 229</a>
+      <a href="https://wa.me/48781010229" target="_blank" rel="noopener">WhatsApp</a>
+      <p class="label" style="margin-top:2rem;">Press kit and recordings</p>
+      <a href="https://piumosso.pl/press/en/" target="_blank">piumosso.pl/press</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <span>Più Mosso — Piotr Górski &amp; Zofia Andersz</span>
+  <span>piumosso.com.pl</span>
+</footer>
+
+</body>
+</html>
