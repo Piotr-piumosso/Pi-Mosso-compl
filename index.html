@@ -424,6 +424,55 @@
   .submit-btn:hover { background: var(--gold-light); }
   .submit-btn:disabled { opacity: .6; cursor: not-allowed; }
 
+  /* ROI CALCULATOR */
+  .roi-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    margin-top: 1.5rem; align-items: start;
+  }
+  .roi-inputs { display: flex; flex-direction: column; gap: 1.4rem; }
+  .roi-field label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: .55rem;
+  }
+  .roi-field label .val {
+    font-size: .95rem; color: var(--gold); font-weight: 400;
+    text-transform: none; letter-spacing: 0;
+  }
+  .roi-slider {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 4px;
+    background: var(--border); border-radius: 2px; outline: none; cursor: pointer;
+  }
+  .roi-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 18px; height: 18px;
+    border-radius: 50%; background: var(--gold); cursor: pointer;
+    border: 2px solid var(--dark2);
+  }
+  .roi-slider::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--gold); cursor: pointer; border: 2px solid var(--dark2);
+  }
+  .roi-output {
+    background: var(--dark3); border: 1px solid rgba(201,169,110,.25);
+    border-radius: var(--radius); padding: 1.8rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .roi-metric { padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .roi-metric:last-of-type { border-bottom: none; padding-bottom: 0; }
+  .roi-metric .roi-label {
+    font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: .35rem;
+  }
+  .roi-metric .roi-num {
+    font-size: 1.8rem; color: var(--gold); font-weight: 400; line-height: 1.1;
+  }
+  .roi-metric .roi-sub { font-size: .76rem; color: var(--text-muted); margin-top: .25rem; }
+  .roi-disclaimer {
+    font-size: .7rem; color: var(--text-muted); line-height: 1.6;
+    border-top: 1px solid var(--border); padding-top: .9rem; margin-top: .5rem;
+  }
+  @media (max-width: 780px) { .roi-wrap { grid-template-columns: 1fr; } }
+
   /* FAQ */
   .faq-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
@@ -556,6 +605,8 @@
     <a href="#packages" class="hide-mobile" data-de>Angebote</a>
     <a href="#results" class="hide-mobile" data-en>Case Studies</a>
     <a href="#results" class="hide-mobile" data-de>Fallstudien</a>
+    <a href="#roi" class="hide-mobile" data-en>ROI</a>
+    <a href="#roi" class="hide-mobile" data-de>ROI</a>
     <a href="#faq" class="hide-mobile" data-en>FAQ</a>
     <a href="#faq" class="hide-mobile" data-de>FAQ</a>
     <a href="#contact" class="hide-mobile" data-en>Contact</a>
@@ -1003,6 +1054,111 @@
   </div>
 </section>
 
+<!-- ROI CALCULATOR -->
+<section id="roi">
+  <div class="container">
+    <p class="section-tag" data-en>Revenue Impact Calculator</p>
+    <p class="section-tag" data-de>Umsatzwirkungsrechner</p>
+    <h2 class="section-title" data-en>Does live music pay for itself?</h2>
+    <h2 class="section-title" data-de>Rechnet sich Live-Musik?</h2>
+    <p class="section-lead" data-en>
+      Our hotel partners report +22% F&amp;B revenue per cover and +55 minutes average dwell time on live music evenings.
+      Enter your numbers to see the impact on your venue.
+    </p>
+    <p class="section-lead" data-de>
+      Unsere Hotelpartner berichten von +22 % F&amp;B-Umsatz pro Couvert und +55 Minuten durchschnittlicher Verweildauer an Musikabenden.
+      Geben Sie Ihre Zahlen ein, um die Auswirkung auf Ihr Haus zu sehen.
+    </p>
+
+    <div class="roi-wrap">
+      <!-- Inputs -->
+      <div class="roi-inputs">
+        <div class="roi-field">
+          <label data-en>
+            Guests per evening
+            <span class="val" id="v-guests">120</span>
+          </label>
+          <label data-de>
+            Gäste pro Abend
+            <span class="val" id="v-guests-de">120</span>
+          </label>
+          <input type="range" class="roi-slider" id="s-guests" min="20" max="400" value="120" step="10">
+        </div>
+
+        <div class="roi-field">
+          <label data-en>
+            Avg. F&amp;B spend per guest
+            <span class="val" id="v-spend">€65</span>
+          </label>
+          <label data-de>
+            Durchschn. F&amp;B-Ausgabe pro Gast
+            <span class="val" id="v-spend-de">65 €</span>
+          </label>
+          <input type="range" class="roi-slider" id="s-spend" min="20" max="200" value="65" step="5">
+        </div>
+
+        <div class="roi-field">
+          <label data-en>
+            Evenings per year
+            <span class="val" id="v-nights">6</span>
+          </label>
+          <label data-de>
+            Abende pro Jahr
+            <span class="val" id="v-nights-de">6</span>
+          </label>
+          <input type="range" class="roi-slider" id="s-nights" min="1" max="24" value="6" step="1">
+        </div>
+
+        <p style="font-size:.8rem;color:var(--text-muted);line-height:1.7;margin-top:.5rem" data-en>
+          Based on observed +22% F&amp;B uplift per cover on live music evenings
+          (hotel residency case study, 3-year average).
+        </p>
+        <p style="font-size:.8rem;color:var(--text-muted);line-height:1.7;margin-top:.5rem" data-de>
+          Basierend auf beobachtetem +22 % F&amp;B-Uplift pro Couvert an Live-Musik-Abenden
+          (Hotel-Residenz-Fallstudie, 3-Jahres-Durchschnitt).
+        </p>
+      </div>
+
+      <!-- Output -->
+      <div class="roi-output">
+        <div class="roi-metric">
+          <p class="roi-label" data-en>Additional F&amp;B revenue — per evening</p>
+          <p class="roi-label" data-de>Zusätzlicher F&amp;B-Umsatz — pro Abend</p>
+          <p class="roi-num" id="out-single">€1,716</p>
+          <p class="roi-sub" data-en id="out-single-sub">based on 120 guests × €65 × 22% uplift</p>
+          <p class="roi-sub" data-de id="out-single-sub-de">bei 120 Gästen × 65 € × 22 % Uplift</p>
+        </div>
+        <div class="roi-metric">
+          <p class="roi-label" data-en>Additional F&amp;B revenue — annual</p>
+          <p class="roi-label" data-de>Zusätzlicher F&amp;B-Umsatz — jährlich</p>
+          <p class="roi-num" id="out-annual">€10,296</p>
+          <p class="roi-sub" data-en>across 6 evenings per year</p>
+          <p class="roi-sub" data-de>über 6 Abende pro Jahr</p>
+        </div>
+        <div class="roi-metric">
+          <p class="roi-label" data-en>Dwell time uplift value</p>
+          <p class="roi-label" data-de>Wert der Verweildauersteigerung</p>
+          <p class="roi-num" id="out-dwell">+55 min</p>
+          <p class="roi-sub" data-en id="out-dwell-sub">≈ 0.9 additional drink rounds per guest</p>
+          <p class="roi-sub" data-de id="out-dwell-sub-de">≈ 0,9 zusätzliche Getränkerunden pro Gast</p>
+        </div>
+        <p class="roi-disclaimer" data-en>
+          Figures based on actual partner data, not projections. Individual results vary by venue, day of week and guest profile. Use as indicative only.
+          <a href="#results" style="color:var(--gold)">See the full case study →</a>
+        </p>
+        <p class="roi-disclaimer" data-de>
+          Zahlen basieren auf echten Partnerdaten, nicht auf Projektionen. Individuelle Ergebnisse variieren je nach Venue, Wochentag und Gästeprofil. Nur als Richtwert zu verstehen.
+          <a href="#results" style="color:var(--gold)">Zur vollständigen Fallstudie →</a>
+        </p>
+        <a href="#contact" class="btn-primary" style="display:block;text-align:center;margin-top:.5rem;padding:.8rem;border-radius:var(--radius);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase" data-en>Request a quote for your venue</a>
+        <a href="#contact" class="btn-primary" style="display:block;text-align:center;margin-top:.5rem;padding:.8rem;border-radius:var(--radius);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase" data-de>Angebot für Ihre Venue anfragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
 <!-- FAQ -->
 <section id="faq">
   <div class="container">
@@ -1308,6 +1464,66 @@
       btn.style.display = 'none';
     }
   });
+
+  // ── ROI Calculator ──────────────────────────────────────────────────────
+  (function() {
+    var sGuests = document.getElementById('s-guests');
+    var sSpend  = document.getElementById('s-spend');
+    var sNights = document.getElementById('s-nights');
+    if (!sGuests) return;
+
+    function fmt(n) {
+      return n >= 1000
+        ? '€' + (n / 1000).toFixed(1).replace('.0','') + 'k'
+        : '€' + n.toLocaleString('en-GB');
+    }
+    function fmtDe(n) {
+      return n >= 1000
+        ? (n / 1000).toFixed(1).replace('.0','') + 'k €'
+        : n.toLocaleString('de-DE') + ' €';
+    }
+
+    function update() {
+      var g = +sGuests.value;
+      var s = +sSpend.value;
+      var n = +sNights.value;
+
+      var upliftPct = 0.22;
+      var single    = Math.round(g * s * upliftPct);
+      var annual    = single * n;
+
+      document.getElementById('v-guests').textContent    = g;
+      document.getElementById('v-guests-de').textContent = g;
+      document.getElementById('v-spend').textContent     = '€' + s;
+      document.getElementById('v-spend-de').textContent  = s + ' €';
+      document.getElementById('v-nights').textContent    = n;
+      document.getElementById('v-nights-de').textContent = n;
+
+      document.getElementById('out-single').textContent     = fmt(single);
+      document.getElementById('out-annual').textContent     = fmt(annual);
+      document.getElementById('out-single-sub').textContent =
+        'based on ' + g + ' guests × €' + s + ' × 22% uplift';
+      document.getElementById('out-single-sub-de').textContent =
+        'bei ' + g + ' Gästen × ' + s + ' € × 22 % Uplift';
+
+      var subEl    = document.getElementById('out-dwell-sub');
+      var subElDe  = document.getElementById('out-dwell-sub-de');
+      var rounds   = ((55 / 60) * 1.0).toFixed(1);
+      if (subEl)   subEl.textContent   = '≈ ' + rounds + ' additional drink rounds per guest';
+      if (subElDe) subElDe.textContent = '≈ ' + rounds + ' zusätzliche Getränkerunden pro Gast';
+
+      document.querySelectorAll('#out-annual + .roi-sub, #out-annual ~ .roi-sub').forEach(function(el){
+        el.textContent = el.getAttribute('data-en') !== null
+          ? 'across ' + n + ' evenings per year'
+          : 'über ' + n + ' Abende pro Jahr';
+      });
+    }
+
+    sGuests.addEventListener('input', update);
+    sSpend.addEventListener('input', update);
+    sNights.addEventListener('input', update);
+    update();
+  })();
 </script>
 </body>
 </html>
