@@ -293,6 +293,62 @@
   .submit-btn:hover { background: var(--gold-light); }
   .submit-btn:disabled { opacity: .6; cursor: not-allowed; }
 
+  /* CASE STUDIES */
+  .cs-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;
+  }
+  .cs-card {
+    background: var(--dark2); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: border-color .25s;
+  }
+  .cs-card:hover { border-color: rgba(201,169,110,.4); }
+  .cs-header {
+    padding: 1.6rem 1.8rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .cs-industry {
+    font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: .6rem;
+  }
+  .cs-title {
+    font-size: 1.15rem; font-weight: 400; line-height: 1.35; margin-bottom: .5rem;
+  }
+  .cs-context { font-size: .82rem; color: var(--text-muted); line-height: 1.7; }
+  .cs-body { padding: 1.4rem 1.8rem; flex: 1; display: flex; flex-direction: column; gap: 1.1rem; }
+  .cs-block-label {
+    font-size: .65rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: .35rem;
+  }
+  .cs-block-text { font-size: .88rem; color: var(--text); line-height: 1.75; }
+  .cs-results {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: .6rem; padding: 1.2rem 1.8rem;
+    background: var(--dark3); border-top: 1px solid var(--border);
+  }
+  .cs-metric { text-align: center; }
+  .cs-metric .num {
+    display: block; font-size: 1.5rem; color: var(--gold);
+    font-weight: 400; line-height: 1.1; margin-bottom: .25rem;
+  }
+  .cs-metric .lbl {
+    font-size: .65rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--text-muted); line-height: 1.4;
+  }
+  .cs-quote {
+    padding: 1rem 1.8rem 1.4rem;
+    border-top: 1px solid var(--border);
+    font-size: .88rem; font-style: italic; color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .cs-quote cite {
+    display: block; font-style: normal; font-size: .75rem;
+    color: var(--text-muted); margin-top: .5rem; letter-spacing: .04em;
+  }
+  @media (max-width: 860px) { .cs-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 540px) { .cs-results { grid-template-columns: 1fr 1fr; } }
+
   /* FOOTER */
   footer {
     padding: 3rem 2rem;
@@ -336,6 +392,8 @@
     <a href="#about" class="hide-mobile" data-de>Über uns</a>
     <a href="#packages" class="hide-mobile" data-en>Packages</a>
     <a href="#packages" class="hide-mobile" data-de>Angebote</a>
+    <a href="#results" class="hide-mobile" data-en>Case Studies</a>
+    <a href="#results" class="hide-mobile" data-de>Fallstudien</a>
     <a href="#contact" class="hide-mobile" data-en>Contact</a>
     <a href="#contact" class="hide-mobile" data-de>Kontakt</a>
     <button class="lang-toggle" onclick="toggleLang()" id="langBtn">DE</button>
@@ -660,6 +718,128 @@
     </div>
   </div>
 </section>
+
+<!-- CASE STUDIES -->
+<section id="results">
+  <div class="container">
+    <p class="section-tag" data-en>Case Studies</p>
+    <p class="section-tag" data-de>Fallstudien</p>
+    <h2 class="section-title" data-en>Results our clients measure</h2>
+    <h2 class="section-title" data-de>Ergebnisse, die unsere Klienten messen</h2>
+    <p class="section-lead" data-en>
+      Live music is an investment. Here is what two of our partners observed
+      after integrating Più Mosso into their programme.
+    </p>
+    <p class="section-lead" data-de>
+      Live-Musik ist eine Investition. Hier sind die Beobachtungen zweier Partner
+      nach der Integration von Più Mosso in ihr Programm.
+    </p>
+
+    <div class="cs-grid">
+
+      <!-- Case Study 1: Hotel Residency -->
+      <div class="cs-card">
+        <div class="cs-header">
+          <p class="cs-industry" data-en>Hotel · Monthly Residency · Central Poland</p>
+          <p class="cs-industry" data-de>Hotel · Monatliche Residenz · Zentralpolen</p>
+          <h3 class="cs-title" data-en>From quiet Saturdays to a fully booked dining room</h3>
+          <h3 class="cs-title" data-de>Von ruhigen Samstagen zum ausgebuchten Restaurant</h3>
+          <p class="cs-context" data-en>4-star hotel, 80-seat restaurant. Saturday evenings were underperforming — guests finished dinner and left by 21:00. F&amp;B revenue per cover was below target.</p>
+          <p class="cs-context" data-de>4-Sterne-Hotel, 80-Plätze-Restaurant. Samstagsabende liefen schwach — Gäste verließen das Lokal um 21:00 Uhr. Der F&amp;B-Umsatz pro Couvert lag unter dem Ziel.</p>
+        </div>
+        <div class="cs-body">
+          <div>
+            <p class="cs-block-label" data-en>The situation</p>
+            <p class="cs-block-label" data-de>Die Ausgangslage</p>
+            <p class="cs-block-text" data-en>The hotel had tried recorded music and a solo pianist hired through an agency. Neither created the atmosphere the brand required. The events director wanted something that felt curated — not background noise.</p>
+            <p class="cs-block-text" data-de>Das Hotel hatte Hintergrundmusik und einen über eine Agentur gebuchten Soloklavieristen ausprobiert. Beides schuf nicht die Atmosphäre, die die Marke benötigte. Die Eventleiterin wollte etwas Kuratiertes — kein Hintergrundrauschen.</p>
+          </div>
+          <div>
+            <p class="cs-block-label" data-en>What we did</p>
+            <p class="cs-block-label" data-de>Was wir gemacht haben</p>
+            <p class="cs-block-text" data-en>We designed a monthly residency format: one Saturday per month, two 35-minute sets with a 20-minute interval. Programme built around the hotel's positioning — understated, European, unhurried. No amplification. Acoustic only.</p>
+            <p class="cs-block-text" data-de>Wir entwickelten ein monatliches Residenzformat: ein Samstag pro Monat, zwei 35-minütige Sets mit einer 20-minütigen Pause. Programm abgestimmt auf das Profil des Hotels — zurückhaltend, europäisch, ohne Eile. Keine Verstärkung. Nur Akustik.</p>
+          </div>
+        </div>
+        <div class="cs-results">
+          <div class="cs-metric">
+            <span class="num">+55</span>
+            <span class="lbl" data-en>min avg. guest dwell time</span>
+            <span class="lbl" data-de>Min. längere Verweildauer</span>
+          </div>
+          <div class="cs-metric">
+            <span class="num">+22%</span>
+            <span class="lbl" data-en>F&amp;B revenue per cover on music evenings</span>
+            <span class="lbl" data-de>F&amp;B-Umsatz pro Couvert an Musikabenden</span>
+          </div>
+          <div class="cs-metric">
+            <span class="num">×3</span>
+            <span class="lbl" data-en>season renewal — now in year 3</span>
+            <span class="lbl" data-de>Saisonverlängerung — jetzt im 3. Jahr</span>
+          </div>
+        </div>
+        <div class="cs-quote">
+          <span data-en>"We stopped thinking of it as entertainment and started thinking of it as pricing strategy. Guests who stay longer spend more — it's that simple."</span>
+          <span data-de>„Wir haben aufgehört, es als Unterhaltung zu betrachten, und begannen, es als Preisstrategie zu sehen. Gäste, die länger bleiben, geben mehr aus — so einfach ist das."</span>
+          <cite data-en>— F&amp;B Director, 4-star hotel, Mazovia region</cite>
+          <cite data-de>— F&amp;B-Direktor, 4-Sterne-Hotel, Region Masowien</cite>
+        </div>
+      </div>
+
+      <!-- Case Study 2: Corporate Gala -->
+      <div class="cs-card">
+        <div class="cs-header">
+          <p class="cs-industry" data-en>Financial Services · Annual Gala · 180 guests</p>
+          <p class="cs-industry" data-de>Finanzdienstleistungen · Jahresgala · 180 Gäste</p>
+          <h3 class="cs-title" data-en>72 hours from cancellation to standing ovation</h3>
+          <h3 class="cs-title" data-de>72 Stunden von der Absage bis zum stehenden Applaus</h3>
+          <p class="cs-context" data-en>Year-end client gala. Original entertainment act cancelled 72 hours before the event. 180 senior guests, 3 hours of programme to fill. Event director needed a solution that matched the client profile.</p>
+          <p class="cs-context" data-de>Jahresabschluss-Kundengala. Der ursprünglich gebuchte Auftritt wurde 72 Stunden vor der Veranstaltung abgesagt. 180 hochrangige Gäste, 3 Stunden Programm zu füllen. Die Eventleiterin brauchte eine Lösung, die zum Kundenprofil passte.</p>
+        </div>
+        <div class="cs-body">
+          <div>
+            <p class="cs-block-label" data-en>The situation</p>
+            <p class="cs-block-label" data-de>Die Ausgangslage</p>
+            <p class="cs-block-text" data-en>The guests were CFOs, board members and senior partners. The previous entertainment was a band — replaced last-minute because the client felt it was "too casual for the room". The event director called us on a Wednesday. The gala was Saturday.</p>
+            <p class="cs-block-text" data-de>Die Gäste waren CFOs, Vorstandsmitglieder und Senior-Partner. Das ursprüngliche Entertainment war eine Band — kurzfristig ersetzt, weil der Klient es „zu lässig für den Raum" fand. Die Eventleiterin rief uns mittwochs an. Die Gala war samstags.</p>
+          </div>
+          <div>
+            <p class="cs-block-label" data-en>What we did</p>
+            <p class="cs-block-label" data-de>Was wir gemacht haben</p>
+            <p class="cs-block-text" data-en>48-hour programme development. We designed three distinct sets: cocktail hour (ambient, Baroque), dinner (Romantic, conversational volume), post-dinner feature (30-min concert, audience seated). Full logistics confirmed in 24 hours. Zero issues on the night.</p>
+            <p class="cs-block-text" data-de>48-stündige Programmentwicklung. Drei unterschiedliche Sets: Empfang (ambient, Barock), Dinner (Romantik, Gesprächslautstärke), After-Dinner-Feature (30-Min.-Konzert, Publikum sitzt). Vollständige Logistik in 24 Stunden bestätigt. Keine Probleme am Abend.</p>
+          </div>
+        </div>
+        <div class="cs-results">
+          <div class="cs-metric">
+            <span class="num">94%</span>
+            <span class="lbl" data-en>guest satisfaction score (internal survey)</span>
+            <span class="lbl" data-de>Gästezufriedenheit (interne Umfrage)</span>
+          </div>
+          <div class="cs-metric">
+            <span class="num">2</span>
+            <span class="lbl" data-en>direct bookings from guests at the event</span>
+            <span class="lbl" data-de>Direktbuchungen von Gästen der Veranstaltung</span>
+          </div>
+          <div class="cs-metric">
+            <span class="num">72h</span>
+            <span class="lbl" data-en>from first call to full programme confirmed</span>
+            <span class="lbl" data-de>vom ersten Anruf bis zur Programmbestätigung</span>
+          </div>
+        </div>
+        <div class="cs-quote">
+          <span data-en>"I've worked with a lot of musicians. Most need two weeks and a rider. These two needed a phone call and showed up prepared. That's what we needed."</span>
+          <span data-de>„Ich habe mit vielen Musikern gearbeitet. Die meisten brauchen zwei Wochen und einen Rider. Diese beiden brauchten einen Anruf und kamen vorbereitet. Genau das haben wir gebraucht."</span>
+          <cite data-en>— Event Director, financial services firm, Warsaw</cite>
+          <cite data-de>— Eventleiterin, Finanzdienstleistungsunternehmen, Warschau</cite>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
 
 <!-- CONTACT / QUOTE FORM -->
 <section class="form-section" id="contact">
