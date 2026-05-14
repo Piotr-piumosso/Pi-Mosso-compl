@@ -424,6 +424,37 @@
   .submit-btn:hover { background: var(--gold-light); }
   .submit-btn:disabled { opacity: .6; cursor: not-allowed; }
 
+  /* FAQ */
+  .faq-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    margin-top: 1.5rem; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+  }
+  .faq-item {
+    background: var(--dark2); padding: 1.6rem 1.8rem;
+    border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .faq-item:nth-child(even) { border-right: none; }
+  .faq-item:nth-last-child(-n+2) { border-bottom: none; }
+  .faq-q {
+    font-size: .92rem; font-weight: 700; color: var(--text);
+    margin-bottom: .7rem; line-height: 1.4;
+    display: flex; gap: .6rem; align-items: flex-start;
+  }
+  .faq-q::before {
+    content: "Q"; color: var(--gold); font-size: .68rem; font-weight: 700;
+    letter-spacing: .1em; margin-top: .15rem; flex-shrink: 0;
+    border: 1px solid rgba(201,169,110,.4); border-radius: 3px;
+    padding: .05rem .3rem; line-height: 1.4;
+  }
+  .faq-a { font-size: .85rem; color: var(--text-muted); line-height: 1.8; }
+  .faq-a strong { color: var(--text); }
+  @media (max-width: 760px) {
+    .faq-grid { grid-template-columns: 1fr; }
+    .faq-item { border-right: none; }
+    .faq-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+  }
+
   /* CASE STUDIES */
   .cs-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;
@@ -525,6 +556,8 @@
     <a href="#packages" class="hide-mobile" data-de>Angebote</a>
     <a href="#results" class="hide-mobile" data-en>Case Studies</a>
     <a href="#results" class="hide-mobile" data-de>Fallstudien</a>
+    <a href="#faq" class="hide-mobile" data-en>FAQ</a>
+    <a href="#faq" class="hide-mobile" data-de>FAQ</a>
     <a href="#contact" class="hide-mobile" data-en>Contact</a>
     <a href="#contact" class="hide-mobile" data-de>Kontakt</a>
     <button class="lang-toggle" onclick="toggleLang()" id="langBtn">DE</button>
@@ -964,6 +997,78 @@
           <cite data-en>— Event Director, financial services firm, Warsaw</cite>
           <cite data-de>— Eventleiterin, Finanzdienstleistungsunternehmen, Warschau</cite>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="section-tag" data-en>Frequently Asked Questions</p>
+    <p class="section-tag" data-de>Häufig gestellte Fragen</p>
+    <h2 class="section-title" data-en>What event directors ask us</h2>
+    <h2 class="section-title" data-de>Was Eventleiter uns fragen</h2>
+    <p class="section-lead" data-en>The questions below come from actual conversations with hotel managers, corporate event directors and private clients. Plain answers, no marketing language.</p>
+    <p class="section-lead" data-de>Die folgenden Fragen stammen aus echten Gesprächen mit Hotelmanagern, Eventleitern und Privatkunden. Klare Antworten, kein Marketingsprech.</p>
+
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <p class="faq-q" data-en>How far in advance do we need to book?</p>
+        <p class="faq-q" data-de>Wie weit im Voraus müssen wir buchen?</p>
+        <p class="faq-a" data-en>For standard events we recommend <strong>6–8 weeks minimum</strong> — enough time to develop the programme properly and confirm logistics. That said, we have deployed within <strong>72 hours</strong> for last-minute situations when schedules allow. If your event is in less than two weeks, contact us directly by phone rather than the form.</p>
+        <p class="faq-a" data-de>Für Standardveranstaltungen empfehlen wir <strong>mindestens 6–8 Wochen</strong> — genug Zeit, das Programm sorgfältig zu entwickeln und die Logistik zu bestätigen. Bei kurzfristigen Anfragen sind wir aber auch schon <strong>innerhalb von 72 Stunden</strong> einsatzbereit gewesen. Weniger als zwei Wochen? Rufen Sie uns direkt an, nutzen Sie nicht das Formular.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q" data-en>Do you perform in Germany, Austria and Switzerland?</p>
+        <p class="faq-q" data-de>Treten Sie in Deutschland, Österreich und der Schweiz auf?</p>
+        <p class="faq-a" data-en>Yes. The DACH region is a core part of our programme. <strong>Travel and accommodation costs are included in the quote</strong> — there are no surprise additions after you receive the proposal. We perform in English and German without issue.</p>
+        <p class="faq-a" data-de>Ja. Die DACH-Region ist ein zentraler Bestandteil unseres Programms. <strong>Reise- und Unterkunftskosten sind im Angebot enthalten</strong> — nach Erhalt des Angebots gibt es keine überraschenden Zusatzkosten. Wir kommunizieren problemlos auf Englisch und Deutsch.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q" data-en>Can you play quietly enough during dinner — so guests can still have a conversation?</p>
+        <p class="faq-q" data-de>Können Sie während des Dinners leise genug spielen, sodass Gespräche möglich bleiben?</p>
+        <p class="faq-a" data-en>This is the most important question for a gala dinner, and the answer is <strong>yes — by design</strong>. We play acoustic only, no amplification. The programme is calibrated for conversational volume during dinner and can be structured to build presence during a post-dinner feature set. We discuss this specifically in the briefing.</p>
+        <p class="faq-a" data-de>Das ist die wichtigste Frage für ein Galadineer, und die Antwort lautet <strong>ja — von Anfang an so geplant</strong>. Wir spielen rein akustisch, ohne Verstärkung. Das Programm ist auf Gesprächslautstärke beim Dinner ausgelegt und kann für ein After-Dinner-Feature-Set in der Intensität gesteigert werden. Wir besprechen dies konkret im Briefing.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q" data-en>Can the programme be customised for our brand or event theme?</p>
+        <p class="faq-q" data-de>Kann das Programm auf unsere Marke oder unser Veranstaltungsthema zugeschnitten werden?</p>
+        <p class="faq-a" data-en>Always. <strong>The programme is built from scratch for each event</strong> — not selected from a catalogue. We consider your guest profile, the venue acoustics, the timing structure of the evening, and any thematic preferences. If your company has a cultural connection to a specific country or period, we can build the repertoire around that.</p>
+        <p class="faq-a" data-de>Immer. <strong>Das Programm wird für jede Veranstaltung von Grund auf neu entwickelt</strong> — nicht aus einem Katalog ausgewählt. Wir berücksichtigen Ihr Gästeprofil, die Raumakustik, die zeitliche Struktur des Abends und thematische Präferenzen. Wenn Ihr Unternehmen einen kulturellen Bezug zu einem bestimmten Land oder einer Epoche hat, bauen wir das Repertoire darauf auf.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q" data-en>What do you need from us for the setup? How much space?</p>
+        <p class="faq-q" data-de>Was benötigen Sie von uns für den Aufbau? Wie viel Platz?</p>
+        <p class="faq-a" data-en>A violin and piano setup requires approximately <strong>3m × 3m of floor space</strong>, one standard power outlet for piano lighting, and a clear acoustic path to the audience — no hard surfaces directly behind the performers if possible. If the venue has a grand piano available, we prefer to use it. If not, we can arrange a quality instrument. We send a full technical rider with the booking confirmation.</p>
+        <p class="faq-a" data-de>Ein Violine-Klavier-Setup benötigt ca. <strong>3 m × 3 m Bodenfläche</strong>, eine Standardsteckdose für die Klavierbeleuchtung und einen freien akustischen Weg zum Publikum — möglichst keine harten Oberflächen direkt hinter den Musikern. Wenn der Veranstaltungsort einen Flügel hat, nutzen wir ihn gerne. Falls nicht, können wir ein hochwertiges Instrument arrangieren. Mit der Buchungsbestätigung erhalten Sie einen vollständigen technischen Rider.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q" data-en>What happens if a musician is ill on the day?</p>
+        <p class="faq-q" data-de>Was passiert, wenn ein Musiker am Tag der Veranstaltung krank ist?</p>
+        <p class="faq-a" data-en>We have a <strong>professional substitution network</strong> and have never cancelled a confirmed booking due to illness. In the event of a substitution, the replacing musician will have been briefed on the programme and will perform the agreed set. You will be notified as soon as a substitution becomes necessary — not on the day of the event.</p>
+        <p class="faq-a" data-de>Wir haben ein <strong>professionelles Substitutionsnetzwerk</strong> und haben bisher noch keine bestätigte Buchung aufgrund von Krankheit absagen müssen. Im Falle einer Vertretung wird der einspringende Musiker über das Programm informiert und das vereinbarte Set aufführen. Sie werden informiert, sobald eine Vertretung notwendig wird — nicht erst am Veranstaltungstag.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q" data-en>We have a strict arrival time and a tight schedule. Can you work with that?</p>
+        <p class="faq-q" data-de>Wir haben eine strenge Ankunftszeit und einen engen Zeitplan. Können Sie damit umgehen?</p>
+        <p class="faq-a" data-en>Yes. We arrive <strong>90 minutes before performance start</strong> as standard, which covers setup, soundcheck, and acoustic calibration. If your venue has specific access windows or load-in restrictions, tell us at the briefing stage — not the day before. We have never held up an event schedule.</p>
+        <p class="faq-a" data-de>Ja. Wir kommen standardmäßig <strong>90 Minuten vor Auftritt</strong> an — das deckt Aufbau, Soundcheck und akustische Kalibrierung ab. Wenn Ihr Veranstaltungsort spezifische Zugangszeiten oder Einschränkungen hat, teilen Sie uns das beim Briefing mit — nicht am Vortag. Wir haben noch nie einen Veranstaltungsablauf aufgehalten.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q" data-en>Do you have liability insurance?</p>
+        <p class="faq-q" data-de>Haben Sie eine Haftpflichtversicherung?</p>
+        <p class="faq-a" data-en>Yes. <strong>Professional liability insurance is in place</strong> and documentation can be provided on request for your compliance team. This is standard for any professional engagement and we are accustomed to the requirements of corporate procurement departments.</p>
+        <p class="faq-a" data-de>Ja. Eine <strong>Berufshaftpflichtversicherung besteht</strong> und entsprechende Unterlagen können auf Anfrage für Ihr Compliance-Team bereitgestellt werden. Dies ist Standard für jedes professionelle Engagement — wir sind mit den Anforderungen von Corporate-Beschaffungsabteilungen vertraut.</p>
       </div>
 
     </div>
